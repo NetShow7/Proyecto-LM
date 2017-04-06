@@ -1,6 +1,5 @@
 create table Users(
   id int(4),
-  dni varchar(9),
   name varchar(12),
   surname varchar(20),
   birth date,
