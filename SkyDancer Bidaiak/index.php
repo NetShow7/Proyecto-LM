@@ -1,7 +1,8 @@
-<!DOCTYPE html>
+<?php
+session_start();
+ ?>
 <html lang="en">
 <head>
-  <!-- Theme Made By www.w3schools.com - No Copyright -->
   <title>Skydancer Bidaiak</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -50,7 +51,7 @@
     }
   }
   .bg-1 {
-    background: #0099ff;
+    background: rgba(138, 138, 138, 0.96);
     color: #bdbdbd;
   }
   .bg-1 h3 {color: #fff;}
@@ -75,18 +76,18 @@
   .btn {
     padding: 10px 20px;
     background-color: #333;
-    color: #0099ff;
+    color: rgba(138, 138, 138, 0.96);
     border-radius: 0;
     transition: .2s;
   }
   .btn:hover, .btn:focus {
     border: 1px solid #333;
-    background-color: #0099ff;
+    background-color: rgba(138, 138, 138, 0.96);
     color: #000;
   }
   .modal-header, h4, .close {
-    background-color: #0099ff;
-    color: ##0099ff !important;
+    background-color: rgba(138, 138, 138, 0.96);
+    color: rgba(138, 138, 138, 0.96) !important;
     text-align: center;
     font-size: 30px;
   }
@@ -96,15 +97,14 @@
   .nav-tabs li a {
     color: #777;
   }
-  #googleMap {
-    width: 100%;
-    height: 400px;
-
-  }
+    #map {
+          height: 400px;
+          width: 100%;
+         }
   .navbar {
     font-family: Montserrat, sans-serif;
     margin-bottom: 0;
-    background-color: #0099ff;
+    background-color: rgba(138, 138, 138, 0.96);
     border: 0;
     font-size: 11px !important;
     letter-spacing: 4px;
@@ -118,7 +118,7 @@
   }
   .navbar-nav li.active a {
     color: #fff !important;
-    background-color: #005c99 !important;
+    background-color: rgba(138, 138, 138, 0.96) !important;
   }
   .navbar-default .navbar-toggle {
     border-color: transparent;
@@ -134,7 +134,7 @@
     background-color: red !important;
   }
   footer {
-    background-color: #0099ff;
+    background-color: rgba(138, 138, 138, 0.96);
     color: #f5f5f5;
     padding: 32px;
   }
@@ -152,16 +152,22 @@
     resize: none;
   }
   .logintable td{
-    background-color: #005c99;
+    background-color: rgba(138, 138, 138, 0.96);
     color: white;
+    font: 400 11px/1.8 "Courier New", Courier, monospace;
   }
   .logininput{
     color: black;
+    font: 400 11px/1.8 "Courier New", Courier, monospace;
   }
   </style>
 </head>
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
-
+<body id="hasiera" data-spy="scroll" data-target=".navbar" data-offset="50">
+ <?php
+  if (isset($_GET["login"]) && $_GET["login"]==0) {
+    echo "<script type='text/javascript'>alert(\"Sorry, your UserID and password don't match.\");</script>";
+  }
+  ?>
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -173,13 +179,22 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-center">
-          <li><a href="#myPage">Hasiera</a></li>
-          <li><a href="#band">Bidaiak</a></li>
-          <li><a href="#tour">Erreserbak</a></li>
-          <li><a href="#contact">Kontaktua</a></li>
-          <li style="position: absolute; right: 0;"><a href="#login" data-toggle="collapse">Login</a></li>
+          <li><a href="#hasiera">Hasiera</a></li>
+          <li><a href="#bidaiak">Bidaiak</a></li>
+          <li><a href="#erreserbak">Erreserbak</a></li>
+          <li><a href="#kontaktua">Kontaktua</a></li>
+          <?php
+            if (isset($_SESSION["loged"])) {
+              echo "<li style=\"position: absolute; right: 0;\"><a href=\"#usermenu\" data-toggle=\"collapse\">Kaixo ".$_SESSION["name"]."!</a></li>";
+
+            }else {
+             echo "<li style=\"position: absolute; right: 0;\"><a href=\"#login\" data-toggle=\"collapse\">Login</a></li>";
+            }
+
+           ?>
+
           <div id="login" class="collapse" style="position: absolute; right: 0;">
-            <form  action="login.php" method="post">
+            <form  action="php/login.php" method="post">
               <table class="logintable">
                 <tr>
                   <td>User ID:</td><td><input type="text" name="userid" class="logininput"></td>
@@ -188,6 +203,20 @@
                   <td>Password: </td> <td><input type="password" name="passwd" class="logininput"></td>
                 </tr>
               </table>
+              <input type="submit" name="login" value="Saioa hasi">
+            </form>
+          </div>
+          <div id="usermenu" class="collapse" style="position: absolute; right: 0;">
+            <form  action="php/logout.php" method="post">
+              <table class="logintable">
+                <tr>
+                  <td>awdawd ID:</td><td><input type="text" name="userid" class="logininput"></td>
+                </tr>
+                <tr>
+                  <td>qwrw: </td> <td><input type="password" name="passwd" class="logininput"></td>
+                </tr>
+              </table>
+              <a href="php/logout.php"></a><input type="submit" name="logout" value="Saioa itxi">
             </form>
           </div>
         </ul>
@@ -239,7 +268,7 @@
   </div>
 
   <!-- Container  -->
-  <div id="band" class="container text-center">
+  <div id="bidaiak" class="container text-center">
     <h3>SkyDancer Bidaiak</h3>
     <p><em>Edozein leku, edoizen momentuan.</em></p>
     <p>1990-an sortua, gure empresa egunero handiagoa egiten da zu bezalako pertsonekin, konfiatzen duten pertsonekin. Beti sahiatzen gara prezio merkeenak eta erosotasun guztiekin lan egiten.</p>
@@ -248,7 +277,8 @@
       <div class="col-sm-4">
         <p class="text-center"><strong>Hegazkinak</strong></p><br>
         <a href="#demo" data-toggle="collapse">
-          <img src="img/avion.png" class="img-circle person" alt="Random Name" width="255" height="255">
+          <img src="img/avion.png" class="img-circle person" alt="Random Name" width="255" height="255"  style="
+    height: 255px;">
         </a>
         <div id="demo" class="collapse">
           <p>Gure egazkinak </p>
@@ -259,7 +289,8 @@
       <div class="col-sm-4">
         <p class="text-center"><strong>Denda fisikoak</strong></p><br>
         <a href="#demo2" data-toggle="collapse">
-          <img src="img/mapa.gif" class="img-circle person" alt="Random Name" width="255" height="255">
+          <img src="img/mapa.gif" class="img-circle person" alt="Random Name" width="255" height="255" style="
+    height: 255px;">
         </a>
         <div id="demo2" class="collapse">
           <p>Espainiako hiri</p>
@@ -270,7 +301,8 @@
       <div class="col-sm-4">
         <p class="text-center"><strong>Prezioa</strong></p><br>
         <a href="#demo3" data-toggle="collapse">
-          <img src="img/precio.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+          <img src="img/precio.jpg" class="img-circle person" alt="Random Name" width="255" height="255" style="
+    height: 255px;">
         </a>
         <div id="demo3" class="collapse">
           <p>Merkatuko prezio</p>
@@ -284,7 +316,7 @@
 
 
   <!-- Container (TOUR Section) -->
-  <div id="tour" class="bg-1">
+  <div id="erreserbak" class="bg-1">
     <div class="container">
 
       <h3 class="text-center">ERRESERBAK</h3>
@@ -407,7 +439,7 @@
   </div>
 
   <!-- Container (Contact Section) -->
-  <div id="contact" class="container">
+  <div id="kontaktua" class="container">
     <h3 class="text-center">Kontaktua</h3>
     <p class="text-center"><em>Galderarik?</em></p>
 
@@ -438,37 +470,27 @@
     <br>
 
 
-    <div id="googleMap"></div>
-
-    <!-- Add Google Maps -->
-    <script src="http://maps.googleapis.com/maps/api/js"></script>
+    <div id="map"></div>
     <script>
-    var myCenter = new google.maps.LatLng(43.189141, -2.503796);
-
-    function initialize() {
-      var mapProp = {
-        center:myCenter,
-        zoom:16,
-        scrollwheel:false,
-        draggable:false,
-        mapTypeId:google.maps.MapTypeId.ROADMAP
-      };
-
-      var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-
-      var marker = new google.maps.Marker({
-        position:myCenter,
-      });
-
-      marker.setMap(map);
-    }
-
-    google.maps.event.addDomListener(window, 'load', initialize);
+      function initMap() {
+        var uluru = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaJvQs2eeO3sgmPxLGxl9IwusU5T9TzFk&callback=initMap">
     </script>
 
     <!-- Footer -->
     <footer class="text-center">
-      <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+      <a class="up-arrow" href="#hasiera" data-toggle="tooltip" title="TO TOP">
         <span class="glyphicon glyphicon-chevron-up"></span>
       </a><br><br>
       <p>SkyDancer© bidaiak</a></p>
@@ -480,7 +502,7 @@
       $('[data-toggle="tooltip"]').tooltip();
 
       // Add smooth scrolling to all links in navbar + footer link
-      $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+      $(".navbar a, footer a[href='#hasiera']").on('click', function(event) {
 
         // Make sure this.hash has a value before overriding default behavior
         if (this.hash !== "") {

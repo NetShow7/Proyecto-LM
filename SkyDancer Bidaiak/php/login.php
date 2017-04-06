@@ -1,11 +1,14 @@
 <?php
+session_start();
 include ("connect.php");
 $link=connectSkydancer();
-$result=mysqli_query($link, "select id from Skydancer where id=".$_POST["userid"]);
+$result=mysqli_query($link, "select name, passwd from users where id=".$_POST["userid"]);
 $pw=mysqli_fetch_array($result);
-if ($pw["user_pw"]==$_POST["passwd"]) {
-  header("Location: welcome.php");
+if ($pw["passwd"]==$_POST["passwd"]) {
+  $_SESSION["loged"] = "yes";
+  $_SESSION["name"] = $pw["name"];
+  header("Location: ..\index.php");
 }else {
-  header("Location: notloged.html");
+  header("Location: ..\index.php?login=0");
 }
  ?>
