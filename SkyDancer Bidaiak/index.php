@@ -358,7 +358,7 @@ session_start();
         </div>
         <div class="col-sm-4">
           <div class="thumbnail">
-            <img src="img\Bangkok.jpg" alt="Paris" width="400" height="300">
+            <img src="img\bangkok.jpg" alt="Paris" width="400" height="300">
             <p><strong>Bangkok</strong></p>
             <p>17/4/2017 - 1/8/2017</p>
             <button class="btn" data-toggle="modal" data-target="#myModal">Tiketa erosi</button>
@@ -366,7 +366,7 @@ session_start();
         </div>
         <div class="col-sm-4">
           <div class="thumbnail">
-            <img src="img\Moscu.jpg" alt="New York" width="400" height="300">
+            <img src="img\moscu.jpg" alt="New York" width="400" height="300">
             <p><strong>Moscú</strong></p>
             <p>20/11/2017 - 30/2/2018</p>
             <button class="btn" data-toggle="modal" data-target="#myModal">Tiketa erosi</button>
@@ -374,7 +374,7 @@ session_start();
         </div>
         <div class="col-sm-4">
           <div class="thumbnail">
-            <img src="img\Hogwarts.jpg" alt="San Francisco" width="400" height="300">
+            <img src="img\hogwarts.jpg" alt="San Francisco" width="400" height="300">
             <p><strong>Hogwarts</strong></p>
             <p>5/7/2017 - 5/8/2017</p>
             <button class="btn" data-toggle="modal" data-target="#myModal">Tiketa erosi</button>
