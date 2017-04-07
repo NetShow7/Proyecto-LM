@@ -23,6 +23,9 @@ session_start();
     font-size: 20px;
     color: #111;
   }
+  .nav.navbar-nav.navbar-center{
+    width: 50%;
+  }
   .container {
     padding: 80px 120px;
   }
@@ -76,7 +79,7 @@ session_start();
   .btn {
     padding: 10px 20px;
     background-color: #333;
-    color: rgba(138, 138, 138, 0.96);
+    color: rgb(0, 208, 245);
     border-radius: 0;
     transition: .2s;
   }
@@ -86,8 +89,8 @@ session_start();
     color: #000;
   }
   .modal-header, h4, .close {
-    background-color: rgba(138, 138, 138, 0.96);
-    color: rgba(138, 138, 138, 0.96) !important;
+    background-color: rgb(142, 142, 142);
+    color: rgb(0, 208, 245) !important;
     text-align: center;
     font-size: 30px;
   }
@@ -111,7 +114,7 @@ session_start();
     opacity: 0.9;
   }
   .navbar li a, .navbar .navbar-brand {
-    color: #d5d5d5 !important;
+    color: rgb(0, 102, 255) !important;
   }
   .navbar-nav li a:hover {
     color: #fff !important;
@@ -192,7 +195,6 @@ session_start();
             }
 
            ?>
-
           <div id="login" class="collapse" style="position: absolute; right: 0;">
             <form  action="php/login.php" method="post">
               <table class="logintable">
@@ -277,8 +279,7 @@ session_start();
       <div class="col-sm-4">
         <p class="text-center"><strong>Hegazkinak</strong></p><br>
         <a href="#demo" data-toggle="collapse">
-          <img src="img/avion.png" class="img-circle person" alt="Random Name" width="255" height="255"  style="
-    height: 255px;">
+          <img src="img/avion.png" class="img-circle person" alt="Random Name" style="height: 255px; width:255px;">
         </a>
         <div id="demo" class="collapse">
           <p>Gure egazkinak </p>
