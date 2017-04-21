@@ -322,14 +322,44 @@ session_start();
 
       <h3 class="text-center">ERRESERBAK</h3>
       <p class="text-center">Hilabetero deskontu berriak.<br> Hemen daude hilabete honetakoak:<br>(Data noiztik-nora dauden salgai)</p>
-      <div class="panel-group" id="accordion">
 
-      </div>
       <ul class="list-group">
         <li class="list-group-item">Madrid/Barcelona - Francia <span class="badge">75% merkeago!</span></li>
         <li class="list-group-item">Espainia (edonon) - Jamaica<span class="badge">55% merkeago!</span></li>
         <li class="list-group-item disabled">Madrid - Estatu batuak (edonon)<span class="badge ">85% merkeago!</span><span class="label label-danger">Agortutak</span></li>
+
       </ul>
+</div>
+</div>
+
+
+
+<div id="bidaiak" class="container text-center">
+
+      <?php
+             include("php/connect.php");
+             $link=connectSkydancer();
+             $result=mysqli_query($link, "select * from flights;");
+           ?>
+           <table border="1">
+             <tr>
+               <th>Chassis number</th><th>Brand</th><th>Model</th><th>Year</th><th>Color</th>
+             </tr>
+             <?php
+               while ($erregistroa=mysqli_fetch_array($result)) {
+                 # code...
+                 echo "<tr><td>".$erregistroa["id"]."</td><td>".$erregistroa["origin"]."</td><td>".$erregistroa["destination"]."</td><td>".$erregistroa["fdate"]."</td><td>". $erregistroa["tickets"]."</td></tr>";
+               }
+               mysqli_free_result($result);
+               mysqli_close($link);
+              ?>
+
+</div>
+
+
+
+              <div class="bg-1">
+                <div class="container">
 
       <div class="row text-center">
         <div class="col-sm-4">
