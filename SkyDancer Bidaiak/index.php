@@ -168,7 +168,7 @@ session_start();
 <body id="hasiera" data-spy="scroll" data-target=".navbar" data-offset="50">
  <?php
   if (isset($_GET["login"]) && $_GET["login"]==0) {
-    echo "<script type='text/javascript'>alert(\"Sorry, your UserID and password don't match.\");</script>";
+    echo "<script type='text/javascript'>alert(\"Zeure Id zenbakia edo pasahitza gaizki dago.\");</script>";
   }
   ?>
   <nav class="navbar navbar-default navbar-fixed-top">
@@ -199,10 +199,10 @@ session_start();
             <form  action="php/login.php" method="post">
               <table class="logintable">
                 <tr>
-                  <td>User ID:</td><td><input type="text" name="userid" class="logininput"></td>
+                  <td>Zure ID zenbakia::</td><td><input type="text" name="userid" class="logininput"></td>
                 </tr>
                 <tr>
-                  <td>Password: </td> <td><input type="password" name="passwd" class="logininput"></td>
+                  <td>Pasahitza: </td> <td><input type="password" name="passwd" class="logininput"></td>
                 </tr>
               </table>
               <input type="submit" name="login" value="Saioa hasi">
