@@ -1,12 +1,13 @@
 <?php
 session_start();
- ?>
+?>
 <html lang="en">
 <head>
   <title>Skydancer Bidaiak</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -27,7 +28,7 @@ session_start();
     width: 50%;
   }
   .container {
-    padding: 80px 120px;
+    padding: 40px 120px;
   }
   .person {
     border: 10px solid transparent;
@@ -54,7 +55,7 @@ session_start();
     }
   }
   .bg-1 {
-    background: rgba(138, 138, 138, 0.96);
+    background:  rgb(0, 77, 148);
     color: #bdbdbd;
   }
   .bg-1 h3 {color: #fff;}
@@ -79,18 +80,18 @@ session_start();
   .btn {
     padding: 10px 20px;
     background-color: #333;
-    color: rgb(0, 208, 245);
+    color:rgb(119, 213, 0);
     border-radius: 0;
     transition: .2s;
   }
   .btn:hover, .btn:focus {
     border: 1px solid #333;
-    background-color: rgba(138, 138, 138, 0.96);
+    background-color: rgb(119, 213, 0);
     color: #000;
   }
   .modal-header, h4, .close {
-    background-color: rgb(142, 142, 142);
-    color: rgb(0, 208, 245) !important;
+    background-color: rgb(0, 77, 148);
+    color:rgb(119, 213, 0) !important;
     text-align: center;
     font-size: 30px;
   }
@@ -100,28 +101,28 @@ session_start();
   .nav-tabs li a {
     color: #777;
   }
-    #map {
-          height: 400px;
-          width: 100%;
-         }
+  #map {
+    height: 400px;
+    width: 100%;
+  }
   .navbar {
     font-family: Montserrat, sans-serif;
     margin-bottom: 0;
-    background-color: rgba(138, 138, 138, 0.96);
+    background-color: rgb(0, 77, 148);
     border: 0;
     font-size: 11px !important;
     letter-spacing: 4px;
     opacity: 0.9;
   }
   .navbar li a, .navbar .navbar-brand {
-    color: rgb(0, 102, 255) !important;
+    color: rgb(119, 213, 0) !important;
   }
   .navbar-nav li a:hover {
     color: #fff !important;
   }
   .navbar-nav li.active a {
     color: #fff !important;
-    background-color: rgba(138, 138, 138, 0.96) !important;
+    background-color: rgb(0, 77, 148) !important;
   }
   .navbar-default .navbar-toggle {
     border-color: transparent;
@@ -137,7 +138,7 @@ session_start();
     background-color: red !important;
   }
   footer {
-    background-color: rgba(138, 138, 138, 0.96);
+    background-color: rgb(0, 77, 148);
     color: #f5f5f5;
     padding: 32px;
   }
@@ -155,7 +156,7 @@ session_start();
     resize: none;
   }
   .logintable td{
-    background-color: rgba(138, 138, 138, 0.96);
+    background-color: rgb(0, 77, 148);
     color: white;
     font: 400 11px/1.8 "Courier New", Courier, monospace;
   }
@@ -163,10 +164,19 @@ session_start();
     color: black;
     font: 400 11px/1.8 "Courier New", Courier, monospace;
   }
+.table{
+  margin: 0 auto;
+  width: auto;
+  background-color: white;
+  border-color:rgb(119, 213, 0) !important;
+}
+
+
+
   </style>
 </head>
 <body id="hasiera" data-spy="scroll" data-target=".navbar" data-offset="50">
- <?php
+  <?php
   if (isset($_GET["login"]) && $_GET["login"]==0) {
     echo "<script type='text/javascript'>alert(\"Zeure Id zenbakia edo pasahitza gaizki dago.\");</script>";
   }
@@ -187,14 +197,14 @@ session_start();
           <li><a href="#erreserbak">Erreserbak</a></li>
           <li><a href="#kontaktua">Kontaktua</a></li>
           <?php
-            if (isset($_SESSION["loged"])) {
-              echo "<li style=\"position: absolute; right: 0;\"><a href=\"#usermenu\" data-toggle=\"collapse\">Kaixo ".$_SESSION["name"]."!</a></li>";
+          if (isset($_SESSION["loged"])) {
+            echo "<li style=\"position: absolute; right: 0;\"><a href=\"#usermenu\" data-toggle=\"collapse\">Kaixo ".$_SESSION["name"]."!</a></li>";
 
-            }else {
-             echo "<li style=\"position: absolute; right: 0;\"><a href=\"#login\" data-toggle=\"collapse\">Login</a></li>";
-            }
+          }else {
+            echo "<li style=\"position: absolute; right: 0;\"><a href=\"#login\" data-toggle=\"collapse\">Login</a></li>";
+          }
 
-           ?>
+          ?>
           <div id="login" class="collapse" style="position: absolute; right: 0;">
             <form  action="php/login.php" method="post">
               <table class="logintable">
@@ -274,6 +284,7 @@ session_start();
     <h3>SkyDancer Bidaiak</h3>
     <p><em>Edozein leku, edoizen momentuan.</em></p>
     <p>1990-an sortua, gure empresa egunero handiagoa egiten da zu bezalako pertsonekin, konfiatzen duten pertsonekin. Beti sahiatzen gara prezio merkeenak eta erosotasun guztiekin lan egiten.</p>
+
     <br>
     <div class="row">
       <div class="col-sm-4">
@@ -291,7 +302,7 @@ session_start();
         <p class="text-center"><strong>Denda fisikoak</strong></p><br>
         <a href="#demo2" data-toggle="collapse">
           <img src="img/mapa.gif" class="img-circle person" alt="Random Name" width="255" height="255" style="
-    height: 255px;">
+          height: 255px;">
         </a>
         <div id="demo2" class="collapse">
           <p>Espainiako hiri</p>
@@ -303,7 +314,7 @@ session_start();
         <p class="text-center"><strong>Prezioa</strong></p><br>
         <a href="#demo3" data-toggle="collapse">
           <img src="img/precio.jpg" class="img-circle person" alt="Random Name" width="255" height="255" style="
-    height: 255px;">
+          height: 255px;">
         </a>
         <div id="demo3" class="collapse">
           <p>Merkatuko prezio</p>
@@ -314,65 +325,58 @@ session_start();
     </div>
   </div>
 
-
-
-  <!-- Container (TOUR Section) -->
+  <!-- Erreserbak -->
   <div id="erreserbak" class="bg-1">
     <div class="container">
 
       <h3 class="text-center">ERRESERBAK</h3>
-      <p class="text-center">Hilabetero deskontu berriak.<br> Hemen daude hilabete honetakoak:<br>(Data noiztik-nora dauden salgai)</p>
+      <p class="text-center">Bidaien lista osoa.<br> ikusi ahal duzu hemen:</p>
 
-      <ul class="list-group">
-        <li class="list-group-item">Madrid/Barcelona - Francia <span class="badge">75% merkeago!</span></li>
-        <li class="list-group-item">Espainia (edonon) - Jamaica<span class="badge">55% merkeago!</span></li>
-        <li class="list-group-item disabled">Madrid - Estatu batuak (edonon)<span class="badge ">85% merkeago!</span><span class="label label-danger">Agortutak</span></li>
+  <div style="overflow-x:auto">
 
-      </ul>
+
+        <?php
+               include("php\connect.php");
+               $link=connectSkydancer();
+               $result=mysqli_query($link, "select * from flights;");
+             ?>
+             <table class="table">
+               <thead>
+               <tr>
+                 <th>Bidaiaren ID</th><th>Nondik</th><th>Nora</th><th>Data</th><th>Prezioa (€)</th>
+               </tr>
+             </thead>
+               <?php
+                 while ($erregistroa=mysqli_fetch_array($result)) {
+                   # code...
+                   echo "<tbody><tr><td>".$erregistroa["id"]."</td><td>".$erregistroa["origin"]."</td><td>".$erregistroa["destination"]."</td><td>".$erregistroa["fdate"]."</td><td>". $erregistroa["tickets"]."</td></tr></tbody>";
+                 }
+                 echo "</table>";
+                 mysqli_free_result($result);
+                 mysqli_close($link);
+                ?>
 </div>
-</div>
+    </div>
+  </div>
 
-
-
-<div id="bidaiak" class="container text-center">
-
-      <?php
-             include("php/connect.php");
-             $link=connectSkydancer();
-             $result=mysqli_query($link, "select * from flights;");
-           ?>
-           <table border="1">
-             <tr>
-               <th>Chassis number</th><th>Brand</th><th>Model</th><th>Year</th><th>Color</th>
-             </tr>
-             <?php
-               while ($erregistroa=mysqli_fetch_array($result)) {
-                 # code...
-                 echo "<tr><td>".$erregistroa["id"]."</td><td>".$erregistroa["origin"]."</td><td>".$erregistroa["destination"]."</td><td>".$erregistroa["fdate"]."</td><td>". $erregistroa["tickets"]."</td></tr>";
-               }
-               mysqli_free_result($result);
-               mysqli_close($link);
-              ?>
-
-</div>
-
-
-
-              <div class="bg-1">
-                <div class="container">
+  <div class="bg-1">
+    <div class="container">
 
       <div class="row text-center">
         <div class="col-sm-4">
           <div class="thumbnail">
-            <img src="img\paris.jpg" alt="Paris" width="400" height="300">
+
+          <img src="img\paris.jpg" alt="Paris" width="400" height="300">
             <p><strong>Paris</strong></p>
             <p>12/6/2017 - 30/8/2017</p>
+
+
             <button class="btn" data-toggle="modal" data-target="#myModal">Tiketa erosi</button>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="thumbnail">
-            <img src="img\jamaica.jpg" alt="Paris" width="400" height="300">
+          <img src="img\jamaica.jpg" alt="Paris" width="400" height="300">
             <p><strong>Jamaica</strong></p>
             <p>4/3/2017 - 25/6/2017</p>
             <button class="btn" data-toggle="modal" data-target="#myModal">Tiketa erosi</button>
@@ -380,7 +384,7 @@ session_start();
         </div>
         <div class="col-sm-4">
           <div class="thumbnail">
-            <img src="img\washington.jpg" alt="Paris" width="400" height="300">
+          <img  src="img\washington.jpg" alt="Paris" width="400" height="300">
             <p><strong>Washington</strong></p>
             <p>1/9/2017 - 15/9/2017</p>
             <button class="btn" data-toggle="modal" data-target="#myModal">Tiketa erosi</button>
@@ -388,7 +392,7 @@ session_start();
         </div>
         <div class="col-sm-4">
           <div class="thumbnail">
-            <img src="img\bangkok.jpg" alt="Paris" width="400" height="300">
+          <img  src="img\bangkok.jpg" alt="Paris" width="400" height="300">
             <p><strong>Bangkok</strong></p>
             <p>17/4/2017 - 1/8/2017</p>
             <button class="btn" data-toggle="modal" data-target="#myModal">Tiketa erosi</button>
@@ -396,7 +400,7 @@ session_start();
         </div>
         <div class="col-sm-4">
           <div class="thumbnail">
-            <img src="img\moscu.jpg" alt="New York" width="400" height="300">
+          <img src="img\moscu.jpg" alt="New York" width="400" height="300">
             <p><strong>Moscú</strong></p>
             <p>20/11/2017 - 30/2/2018</p>
             <button class="btn" data-toggle="modal" data-target="#myModal">Tiketa erosi</button>
@@ -404,7 +408,7 @@ session_start();
         </div>
         <div class="col-sm-4">
           <div class="thumbnail">
-            <img src="img\hogwarts.jpg" alt="San Francisco" width="400" height="300">
+        <img src="img\hogwarts.jpg" alt="San Francisco" width="400" height="300">
             <p><strong>Hogwarts</strong></p>
             <p>5/7/2017 - 5/8/2017</p>
             <button class="btn" data-toggle="modal" data-target="#myModal">Tiketa erosi</button>
@@ -503,17 +507,17 @@ session_start();
 
     <div id="map"></div>
     <script>
-      function initMap() {
-        var uluru = {lat: -25.363, lng: 131.044};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: uluru
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
-      }
+    function initMap() {
+      var uluru = {lat: -25.363, lng: 131.044};
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 4,
+        center: uluru
+      });
+      var marker = new google.maps.Marker({
+        position: uluru,
+        map: map
+      });
+    }
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaJvQs2eeO3sgmPxLGxl9IwusU5T9TzFk&callback=initMap">
