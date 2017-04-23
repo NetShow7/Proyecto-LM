@@ -11,5 +11,5 @@ function connectSkydancer(){
 			exit();
 		}
 		return $link;
-}
+};
 ?>

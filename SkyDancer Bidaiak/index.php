@@ -31,17 +31,48 @@ session_start();
         </button>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav navbar-center">
+        <ul class="nav navbar-nav navbar-center" style="width:100%">
           <li><a href="#hasiera">Hasiera</a></li>
           <li><a href="#bidaiak">Bidaiak</a></li>
           <li><a href="#erreserbak">Erreserbak</a></li>
           <li><a href="#kontaktua">Kontaktua</a></li>
           <?php
           if (isset($_SESSION["loged"])) {
-            echo "<li style=\"position: absolute; right: 0;\"><a href=\"#usermenu\" data-toggle=\"collapse\">Kaixo ".$_SESSION["name"]."!</a></li>";
+            echo "
+
+            <li style=\"position: relative; float:right; right: 0;\"><a href=\"#usermenu\" data-toggle=\"modal\" data-target=\"#bidaia\">Bidai berria sartu</a></li>
+            <li style=\"position: relative; float:right; right: 0;\"><a href=\"#usermenu\" data-toggle=\"modal\" data-target=\"#ezabatu\">Bidaia ezabatu</a></li>
+            <li style=\"position: relative; float: right; right: 0;\"><a href=\"#usermenu\" data-toggle=\"collapse\">Saioa itxi</a></li>
+
+            <div id=\"usermenu\" class=\"collapse\" style=\"position: absolute; right: 0;\">
+
+              <form  action=\"php/logout.php\" method=\"post\">
+
+
+
+
+
+                <a href=\"php/logout.php\"></a><input type=\"submit\" name=\"logout\" value=\"Saioa itxi\">
+              </form>
+            </div>
+            ";
 
           }else {
-            echo "<li style=\"position: absolute; right: 0;\"><a href=\"#login\" data-toggle=\"collapse\">Login</a></li>";
+            echo "<li style=\"position: absolute; right: 0;\"><a href=\"#login\" data-toggle=\"collapse\">Login</a></li>
+            <div id=\"login\" class=\"collapse\" style=\"position: absolute; right: 0;\">
+              <form  action=\"php/login.php\" method=\"post\">
+                <table class=\"logintable\">
+                  <tr>
+                    <td>Zure ID zenbakia::</td><td><input type=\"text\" name=\"userid\" class=\"logininput\"></td>
+                  </tr>
+                  <tr>
+                    <td>Pasahitza: </td> <td><input type=\"password\" name=\"passwd\" class=\"logininput\"></td>
+                  </tr>
+                </table>
+                <input type=\"submit\" name=\"login\" value=\"Saioa hasi\">
+              </form>
+            </div>
+            ";
           }
 
           ?>
@@ -49,25 +80,23 @@ session_start();
             <form  action="php/login.php" method="post">
               <table class="logintable">
                 <tr>
-                  <td>Zure ID zenbakia::</td><td><input type="text" name="userid" class="logininput"></td>
+                  <td>Zure ID zenbakia:</td><td><input type="text" name="userid" class="logininput"></td>
                 </tr>
                 <tr>
-                  <td>Pasahitza: </td> <td><input type="password" name="passwd" class="logininput"></td>
+                  <td>Pasahitza:</td> <td><input type="password" name="passwd" class="logininput"></td>
                 </tr>
               </table>
               <input type="submit" name="login" value="Saioa hasi">
             </form>
           </div>
           <div id="usermenu" class="collapse" style="position: absolute; right: 0;">
+
             <form  action="php/logout.php" method="post">
-              <table class="logintable">
-                <tr>
-                  <td>awdawd ID:</td><td><input type="text" name="userid" class="logininput"></td>
-                </tr>
-                <tr>
-                  <td>qwrw: </td> <td><input type="password" name="passwd" class="logininput"></td>
-                </tr>
-              </table>
+             <li style=\"position: absolute; right: 0;\"><a href=\"#usermenu\" data-toggle="modal" data-target="#myModal">54648979</a></li>
+
+
+
+
               <a href="php/logout.php"></a><input type="submit" name="logout" value="Saioa itxi">
             </form>
           </div>
@@ -183,13 +212,13 @@ session_start();
              <table class="table">
                <thead>
                <tr>
-                 <th>Bidaiaren ID</th><th>Nondik</th><th>Nora</th><th>Data</th><th>Prezioa (€)</th>
+                 <th>Bidaiaren ID</th><th>Nondik</th><th>Nora</th><th>Data</th><th>Prezioa (€)</th><th>Ticketak</th>
                </tr>
              </thead>
                <?php
                  while ($erregistroa=mysqli_fetch_array($result)) {
                    # code...
-                   echo "<tbody><tr><td>".$erregistroa["id"]."</td><td>".$erregistroa["origin"]."</td><td>".$erregistroa["destination"]."</td><td>".$erregistroa["fdate"]."</td><td>". $erregistroa["tickets"]."</td></tr></tbody>";
+                   echo "<tbody><tr><td>".$erregistroa["id"]."</td><td>".$erregistroa["origin"]."</td><td>".$erregistroa["destination"]."</td><td>".$erregistroa["fdate"]."</td><td>". $erregistroa["price"]."</td><td>".($erregistroa["tickets"]-$erregistroa["tickets_sold"])."</td></tr></tbody>";
                  }
                  echo "</table>";
                  mysqli_free_result($result);
@@ -256,7 +285,7 @@ session_start();
         </div>
       </div>
     </div>
-
+    </div>
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
       <div class="modal-dialog">
@@ -313,94 +342,191 @@ session_start();
     </div>
   </div>
 
+  <div class="modal fade" id="bidaia" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Bidai berria</h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-info">
+  <strong>Mezedez:</strong> bete urrengo datuak:
+</div>
+          <form  action="php/bidaia.php" method="post">
+            <table class="table">
+              <tr>
+                <td>Bidaiaren ID:</td><td><input type="text" name="id" class="logininput"></td>
+              </tr>
+              <tr>
+                <td>Iraupena:</td> <td><input type="password" name="dur" class="logininput"></td>
+              </tr>
+              <tr>
+                <td>Nondik:</td><td><input type="text" name="ori" class="logininput"></td>
+              </tr>
+              <tr>
+                <td>Nora:</td><td><input type="text" name="des" class="logininput"></td>
+              </tr>
+              <tr>
+                <td>Lehenengo pilotoaren izena:</td><td><input type="text" name="p1" class="logininput"></td>
+              </tr>
+              <tr>
+                <td>Bigarren pilotoaren izena:</td><td><input type="text" name="p2" class="logininput"></td>
+              </tr>
+              <tr>
+                <td>Ticket kopurua:</td><td><input type="text" name="tic" class="logininput"></td>
+              </tr>
+              <tr>
+                <td>Saldu egin diren ticketak (baldin badaude):</td><td><input type="text" name="tics" class="logininput"></td>
+              </tr>
+              <tr>
+                <td>Data (YYYY-MM-DD):</td><td><input type="text" name="dat" class="logininput"></td>
+              </tr>
+              <tr>
+                <td>Prezioa:</td><td><input type="text" name="prc" class="logininput"></td>
+              </tr>
+            </table>
+            <input class="btn" type="submit" name="login" value="Jarraitu">
+          </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" data-dismiss="modal">Utzi</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="modal fade" id="ezabatu" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Bidai berria</h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-danger">
+  <strong>Kontuz!</strong> Bidai bat ezabatu behar duzu.
+</div>
+            <?php
+
+                $link=connectSkydancer(); #We are calling the function
+                $result=mysqli_query($link, "select * from flights;");
+              ?>
+              <table class="table">
+                <tr>
+                  <th>Bidaiaren ID</th><th>Nondik</th><th>Nora</th><th>Data</th><th>Prezioa (€)</th><th>Ezabatu</th>
+                </tr>
+                <?php
+                  while ($erregistroa=mysqli_fetch_array($result)) {
+                    # code...
+                    echo "<tbody><tr><td>".$erregistroa["id"]."</td><td>".$erregistroa["origin"]."</td><td>".$erregistroa["destination"]."</td><td>".$erregistroa["fdate"]."</td><td>". $erregistroa["tickets"]."</td><td><a href=\"php/ezabatu.php?id=".$erregistroa["id"]."\"><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\"></span></a></td></tr></tbody>";
+                  }
+                  mysqli_free_result($result);
+                  mysqli_close($link);
+                 ?>
+
+
+              </table>
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Utzi</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- Container (Contact Section) -->
   <div id="kontaktua" class="container">
-    <h3 class="text-center">Kontaktua</h3>
-    <p class="text-center"><em>Galderarik?</em></p>
+   <h3 class="text-center">Kontaktua</h3>
+   <p class="text-center"><em>Galderarik?</em></p>
 
-    <div class="row">
-      <div class="col-md-4">
-        <p><span class="glyphicon glyphicon-map-marker"></span>Arrasate, Gipuzkoa</p>
-        <p><span class="glyphicon glyphicon-phone"></span>Tlf: +34 943 579 120</p>
-        <p><span class="glyphicon glyphicon-envelope"></span>Email: Skydancerbidaiak@gmail.com</p>
-      </div>
-      <div class="col-md-8">
-        <div class="row">
-          <div class="col-sm-6 form-group">
-            <input class="form-control" id="name" name="name" placeholder="Izena" type="text" required>
-          </div>
-          <div class="col-sm-6 form-group">
-            <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
-          </div>
-        </div>
-        <textarea class="form-control" id="comments" name="comments" placeholder="Komentarioa" rows="5"></textarea>
-        <br>
-        <div class="row">
-          <div class="col-md-12 form-group">
-            <button class="btn pull-right" type="submit">Bidali</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br>
+   <div class="row">
+     <div class="col-md-4">
+       <p><span class="glyphicon glyphicon-map-marker"></span>Arrasate, Gipuzkoa</p>
+       <p><span class="glyphicon glyphicon-phone"></span>Tlf: +34 943 579 120</p>
+       <p><span class="glyphicon glyphicon-envelope"></span>Email: Skydancerbidaiak@gmail.com</p>
+     </div>
+     <div class="col-md-8">
+       <div class="row">
+         <div class="col-sm-6 form-group">
+           <input class="form-control" id="name" name="name" placeholder="Izena" type="text" required>
+         </div>
+         <div class="col-sm-6 form-group">
+           <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+         </div>
+       </div>
+       <textarea class="form-control" id="comments" name="comments" placeholder="Komentarioa" rows="5"></textarea>
+       <br>
+       <div class="row">
+         <div class="col-md-12 form-group">
+           <button class="btn pull-right" type="submit">Bidali</button>
+         </div>
+       </div>
+     </div>
+   </div>
+   <br>
 
 
-    <div id="map"></div>
-    <script>
-    function initMap() {
-      var uluru = {lat: -25.363, lng: 131.044};
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
-        center: uluru
-      });
-      var marker = new google.maps.Marker({
-        position: uluru,
-        map: map
-      });
-    }
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaJvQs2eeO3sgmPxLGxl9IwusU5T9TzFk&callback=initMap">
-    </script>
+   <div id="map"></div>
+   <script>
+   function initMap() {
+     var uluru = {lat: -25.363, lng: 131.044};
+     var map = new google.maps.Map(document.getElementById('map'), {
+       zoom: 4,
+       center: uluru
+     });
+     var marker = new google.maps.Marker({
+       position: uluru,
+       map: map
+     });
+   }
+   </script>
+   <script async defer
+   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaJvQs2eeO3sgmPxLGxl9IwusU5T9TzFk&callback=initMap">
+   </script>
 
-    <!-- Footer -->
-    <footer class="text-center">
-      <a class="up-arrow" href="#hasiera" data-toggle="tooltip" title="TO TOP">
-        <span class="glyphicon glyphicon-chevron-up"></span>
-      </a><br><br>
-      <p>SkyDancer© bidaiak</a></p>
-    </footer>
+   <!-- Footer -->
+   <footer class="text-center">
+     <a class="up-arrow" href="#hasiera" data-toggle="tooltip" title="TO TOP">
+       <span class="glyphicon glyphicon-chevron-up"></span>
+     </a><br><br>
+     <p>SkyDancer© bidaiak</a></p>
+   </footer>
 
-    <script>
-    $(document).ready(function(){
-      // Initialize Tooltip
-      $('[data-toggle="tooltip"]').tooltip();
+   <script>
+   $(document).ready(function(){
+     // Initialize Tooltip
+     $('[data-toggle="tooltip"]').tooltip();
+     // Add smooth scrolling to all links in navbar + footer link
+     $(".navbar a, footer a[href='#hasiera']").on('click', function(event) {
+       // Make sure this.hash has a value before overriding default behavior
+       if (this.hash !== "") {
+         // Prevent default anchor click behavior
+         event.preventDefault();
+         // Store hash
+         var hash = this.hash;
+         // Using jQuery's animate() method to add smooth page scroll
+         // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+         $('html, body').animate({
+           scrollTop: $(hash).offset().top
+         }, 900, function(){
+           // Add hash (#) to URL when done scrolling (default click behavior)
+           window.location.hash = hash;
+         });
+       } // End if
+     });
+   })
+   </script>
 
-      // Add smooth scrolling to all links in navbar + footer link
-      $(".navbar a, footer a[href='#hasiera']").on('click', function(event) {
-
-        // Make sure this.hash has a value before overriding default behavior
-        if (this.hash !== "") {
-
-          // Prevent default anchor click behavior
-          event.preventDefault();
-
-          // Store hash
-          var hash = this.hash;
-
-          // Using jQuery's animate() method to add smooth page scroll
-          // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-          $('html, body').animate({
-            scrollTop: $(hash).offset().top
-          }, 900, function(){
-
-            // Add hash (#) to URL when done scrolling (default click behavior)
-            window.location.hash = hash;
-          });
-        } // End if
-      });
-    })
-    </script>
-
-  </body>
-  </html>
+ </body>
+ </html>
