@@ -364,7 +364,7 @@ session_start();
                 <td>Bidaiaren ID:</td><td><input type="text" name="id" class="logininput"></td>
               </tr>
               <tr>
-                <td>Iraupena:</td> <td><input type="password" name="dur" class="logininput"></td>
+                <td>Iraupena:</td> <td><input type="text" name="dur" class="logininput"></td>
               </tr>
               <tr>
                 <td>Nondik:</td><td><input type="text" name="ori" class="logininput"></td>
@@ -385,7 +385,7 @@ session_start();
                 <td>Saldu egin diren ticketak (baldin badaude):</td><td><input type="text" name="tics" class="logininput"></td>
               </tr>
               <tr>
-                <td>Data (YYYY-MM-DD):</td><td><input type="text" name="dat" class="logininput"></td>
+                <td>Data (YYYY-MM-DD):</td><td><input type="date" name="dat" class="logininput"></td>
               </tr>
               <tr>
                 <td>Prezioa:</td><td><input type="text" name="prc" class="logininput"></td>
