@@ -13,6 +13,7 @@ session_start();
   <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="js/validate.js"></script>
 
 </head>
 <body id="hasiera" data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -37,7 +38,9 @@ session_start();
           <li><a href="#erreserbak">Erreserbak</a></li>
           <li><a href="#kontaktua">Kontaktua</a></li>
           <?php
+
           if (isset($_SESSION["loged"])) {
+
             echo "
 
             <li style=\"position: relative; float:right; right: 0;\"><a href=\"#usermenu\" data-toggle=\"modal\" data-target=\"#bidaia\">Bidai berria sartu</a></li>
@@ -60,13 +63,13 @@ session_start();
           }else {
             echo "<li style=\"position: absolute; right: 0;\"><a href=\"#login\" data-toggle=\"collapse\">Login</a></li>
             <div id=\"login\" class=\"collapse\" style=\"position: absolute; right: 0;\">
-              <form  action=\"php/login.php\" method=\"post\">
+              <form name=\"loginform\" action=\"php/login.php\" onsubmit=\"return validateForm()\" method=\"post\">
                 <table class=\"logintable\">
                   <tr>
-                    <td>Zure ID zenbakia::</td><td><input type=\"text\" name=\"userid\" class=\"logininput\"></td>
+                    <td>Zure ID zenbakia::</td><td><input type=\"text\" name=\"userid\" class=\"logininput\" ></td>
                   </tr>
                   <tr>
-                    <td>Pasahitza: </td> <td><input type=\"password\" name=\"passwd\" class=\"logininput\"></td>
+                    <td>Pasahitza: </td> <td><input type=\"password\" name=\"passwd\" class=\"logininput\" ></td>
                   </tr>
                 </table>
                 <input type=\"submit\" name=\"login\" value=\"Saioa hasi\">

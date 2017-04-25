@@ -110,7 +110,7 @@ h3, h4 {
 }
 .navbar-nav li.active a {
   color: #fff !important;
-  background-color: rgb(6, 113, 191) !important;
+  background-color: rgb(144, 144, 144) !important;
 }
 .navbar-default .navbar-toggle {
   border-color: transparent;
