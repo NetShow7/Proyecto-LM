@@ -14,6 +14,8 @@ session_start();
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="js/validate.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 
 </head>
 <body id="hasiera" data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -70,6 +72,12 @@ session_start();
                   </tr>
                   <tr>
                     <td>Pasahitza: </td> <td><input type=\"password\" name=\"passwd\" class=\"logininput\" ></td>
+                  </tr>
+                  <tr>
+                  <td>
+                  <div class=\"g-recaptcha\" style=\"transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;\" data-sitekey=\"6LfdKh8UAAAAACtpTdmwKPVsgFGhRL8OJX9tJOS1\"></div>
+
+                  </td>
                   </tr>
                 </table>
                 <input type=\"submit\" name=\"login\" value=\"Saioa hasi\">
