@@ -45,7 +45,7 @@ session_start();
 
             <li style=\"position: relative; float:right; right: 0;\"><a href=\"#usermenu\" data-toggle=\"modal\" data-target=\"#bidaia\">Bidai berria sartu</a></li>
             <li style=\"position: relative; float:right; right: 0;\"><a href=\"#usermenu\" data-toggle=\"modal\" data-target=\"#ezabatu\">Bidaia ezabatu</a></li>
-            <li style=\"position: relative; float: right; right: 0;\"><a href=\"#usermenu\" data-toggle=\"collapse\">Saioa itxi</a></li>
+            <li style=\"position: relative; float: right; right: 0;\"><a href=\"php/logout.php\">Saioa itxi</a></li>
 
             <div id=\"usermenu\" class=\"collapse\" style=\"position: absolute; right: 0;\">
 
@@ -356,8 +356,8 @@ session_start();
         </div>
         <div class="modal-body">
           <div class="alert alert-info">
-  <strong>Mezedez:</strong> bete urrengo datuak:
-</div>
+      <strong>Mezedez:</strong> bete urrengo datuak:
+    </div>
           <form  action="php/bidaia.php" method="post">
             <table class="table">
               <tr>
