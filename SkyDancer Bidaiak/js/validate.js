@@ -14,3 +14,8 @@ function validateForm() {
       return true;
     }
 }
+
+function erregistroaBalidatu(){
+  var nan = document.forms["erregistratu"]["id"].value;
+  var nan = document.forms["erregistratu"]["id"].value;
+}

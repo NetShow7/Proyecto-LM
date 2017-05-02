@@ -63,54 +63,16 @@ session_start();
             ";
 
           }else {
-            echo "<li style=\"position: absolute; right: 0;\"><a href=\"#login\" data-toggle=\"collapse\">Login</a></li>
-            <div id=\"login\" class=\"collapse\" style=\"position: absolute; right: 0;\">
-              <form name=\"loginform\" action=\"php/login.php\" onsubmit=\"return validateForm()\" method=\"post\">
-                <table class=\"logintable\">
-                  <tr>
-                    <td>Zure ID zenbakia::</td><td><input type=\"text\" name=\"userid\" class=\"logininput\" ></td>
-                  </tr>
-                  <tr>
-                    <td>Pasahitza: </td> <td><input type=\"password\" name=\"passwd\" class=\"logininput\" ></td>
-                  </tr>
-                  <tr>
-                  <td>
-                  <div class=\"g-recaptcha\" style=\"transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;\" data-sitekey=\"6LfdKh8UAAAAACtpTdmwKPVsgFGhRL8OJX9tJOS1\"></div>
+            echo "
+            <li style=\"position: relative; float:right; margin-right: 4%; \"><a href=\"#usermenu\" data-toggle=\"modal\" data-target=\"#erregistratu\">Erregistratu</a></li>
+            <li style=\"position: absolute; right: 0;\"><a href=\"#usermenu\" data-toggle=\"modal\" data-target=\"#login\">Login</a></li>
 
-                  </td>
-                  </tr>
-                </table>
-                <input type=\"submit\" name=\"login\" value=\"Saioa hasi\">
-              </form>
-            </div>
             ";
           }
 
           ?>
-          <div id="login" class="collapse" style="position: absolute; right: 0;">
-            <form  action="php/login.php" method="post">
-              <table class="logintable">
-                <tr>
-                  <td>Zure ID zenbakia:</td><td><input type="text" name="userid" class="logininput"></td>
-                </tr>
-                <tr>
-                  <td>Pasahitza:</td> <td><input type="password" name="passwd" class="logininput"></td>
-                </tr>
-              </table>
-              <input type="submit" name="login" value="Saioa hasi">
-            </form>
-          </div>
-          <div id="usermenu" class="collapse" style="position: absolute; right: 0;">
-
-            <form  action="php/logout.php" method="post">
-             <li style=\"position: absolute; right: 0;\"><a href=\"#usermenu\" data-toggle="modal" data-target="#myModal">54648979</a></li>
 
 
-
-
-              <a href="php/logout.php"></a><input type="submit" name="logout" value="Saioa itxi">
-            </form>
-          </div>
         </ul>
       </div>
     </div>
@@ -366,7 +328,7 @@ session_start();
           <div class="alert alert-info">
       <strong>Mezedez:</strong> bete urrengo datuak:
     </div>
-          <form  action="php/bidaia.php" method="post">
+          <form  name="erregistratu"action="php/bidaia.php" method="post">
             <table class="table">
               <tr>
                 <td>Bidaiaren ID:</td><td><input type="text" name="id" class="logininput"></td>
@@ -410,6 +372,160 @@ session_start();
 
     </div>
   </div>
+
+  <div class="modal fade" id="login" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Login</h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-info">
+      <strong>Mezedez:</strong> bete urrengo datuak:
+    </div>
+          <form  name="loginform"  onsubmit="return validateForm()" action="php/login.php" method="post">
+            <table class="table">
+              <tr>
+                <td>
+                  <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+                    <input type="text" name="userid" class="form-control" placeholder="Erabiltzaile ID" aria-describedby="basic-addon1">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-lock"></span></span>
+                    <input type="password" name="passwd"class="form-control" placeholder="Pasahitza" aria-describedby="basic-addon1">
+                  </div>
+                </td>
+              </tr>
+
+            </table>
+            <input class="btn" type="submit" name="login" value="Jarraitu">
+          </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" data-dismiss="modal">Utzi</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="erregistratu" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Erabiltzaile berria</h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-info">
+      <strong>Mezedez:</strong> bete urrengo datuak:
+    </div>
+          <form  action="php/erregistratu.php" method="post">
+            <table class="table">
+
+
+              <tr>
+                <td>
+                  <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-credit-card"></span></span>
+                    <input type="text" name="dni" class="form-control" placeholder="DNI / NAN" aria-describedby="basic-addon1">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-option-vertical"></span></span>
+                  <input type="text" name="izena" class="form-control" placeholder="Izena" aria-describedby="basic-addon1">
+                </div>
+              </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-option-vertical"></span></span>
+                  <input type="text" name="abi" class="form-control" placeholder="Abizena" aria-describedby="basic-addon1">
+                </div>
+              </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar"></span></span>
+                    <input type="date" name="data" class="form-control" placeholder="Jaiotze data" aria-describedby="basic-addon1">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-home"></span></span>
+                    <input type="text" name="hel" class="form-control" placeholder="Helbidea" aria-describedby="basic-addon1">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><div class="input-group">
+                  <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-phone"></span></span>
+                  <input type="tel" name="tlf" class="form-control" placeholder="Telefonoa" aria-describedby="basic-addon1">
+                </div></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+                    <input type="text" name="username" class="form-control" placeholder="Erabiltzaile izena" aria-describedby="basic-addon1">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-lock"></span></span>
+                    <input type="text" name="passwd" class="form-control" placeholder="Pasahitza" aria-describedby="basic-addon1">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+
+                  <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-envelope"></span></span>
+                    <input type="email" name="email" class="form-control" placeholder="Email" aria-describedby="basic-addon1">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                <div class="g-recaptcha" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;" data-sitekey="6LfdKh8UAAAAACtpTdmwKPVsgFGhRL8OJX9tJOS1"></div>
+                </td>
+              </tr>
+            </table>
+
+            <input class="btn" type="submit" name="login" value="Jarraitu">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" data-dismiss="modal">Utzi</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
 
   <div class="modal fade" id="ezabatu" role="dialog">
     <div class="modal-dialog">
