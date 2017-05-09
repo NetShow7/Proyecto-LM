@@ -16,6 +16,13 @@ function validateForm() {
 }
 
 function erregistroaBalidatu(){
-  var nan = document.forms["erregistratu"]["id"].value;
-  var nan = document.forms["erregistratu"]["id"].value;
+  var dur = document.forms["erregistratu"]["dur"].value;
+  var ori = document.forms["erregistratu"]["ori"].value;
+  var des = document.forms["erregistratu"]["des"].value;
+  var p1 = document.forms["erregistratu"]["p1"].value;
+  var p2 = document.forms["erregistratu"]["p2"].value;
+  var tic = document.forms["erregistratu"]["tic"].value;
+  var tic_s = document.forms["erregistratu"]["tics"].value;
+  var date = document.forms["erregistratu"]["date"].value;
+  var prc = document.forms["erregistratu"]["prc"].value;
 }

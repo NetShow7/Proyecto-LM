@@ -3,7 +3,7 @@ session_start();
 ?>
 <html lang="en">
 <head>
-  <title>Skydancer Bidaiak</title>
+  <title>Skydancer Bidaiak 3</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css.css">
@@ -43,31 +43,32 @@ session_start();
 
           if (isset($_SESSION["loged"])) {
 
-            echo "
+            ?>
+              
+            <li style="position: relative; float:right; right: 0;"><a href="#usermenu" data-toggle="modal" data-target="#bidaia">Bidai berria sartu</a></li>
+            <li style="position: relative; float:right; right: 0;"><a href="#usermenu" data-toggle="modal" data-target="#ezabatu">Bidaia ezabatu</a></li>
+            <li style="position: relative; float: right; right: 0;"><a href="php/logout.php">Saioa itxi</a></li>
 
-            <li style=\"position: relative; float:right; right: 0;\"><a href=\"#usermenu\" data-toggle=\"modal\" data-target=\"#bidaia\">Bidai berria sartu</a></li>
-            <li style=\"position: relative; float:right; right: 0;\"><a href=\"#usermenu\" data-toggle=\"modal\" data-target=\"#ezabatu\">Bidaia ezabatu</a></li>
-            <li style=\"position: relative; float: right; right: 0;\"><a href=\"php/logout.php\">Saioa itxi</a></li>
+            <div id="usermenu" class="collapse" style="position: absolute; right: 0;">
 
-            <div id=\"usermenu\" class=\"collapse\" style=\"position: absolute; right: 0;\">
-
-              <form  action=\"php/logout.php\" method=\"post\">
-
-
+              <form  action="php/logout.php" method="post">
 
 
 
-                <a href=\"php/logout.php\"></a><input type=\"submit\" name=\"logout\" value=\"Saioa itxi\">
+
+
+                <a href="php/logout.php"></a><input type="submit" name="logout" value="Saioa itxi">
               </form>
             </div>
-            ";
-
+            
+          <?php
           }else {
-            echo "
-            <li style=\"position: relative; float:right; margin-right: 4%; \"><a href=\"#usermenu\" data-toggle=\"modal\" data-target=\"#erregistratu\">Erregistratu</a></li>
-            <li style=\"position: absolute; right: 0;\"><a href=\"#usermenu\" data-toggle=\"modal\" data-target=\"#login\">Login</a></li>
+            ?>
+            <li style="position: relative; float:right; margin-right: 4%; "><a href="#usermenu" data-toggle="modal" data-target="#erregistratu">Erregistratu</a></li>
+            <li style="position: absolute; right: 0;"><a href="#usermenu" data-toggle="modal" data-target="#login">Login</a></li>
 
-            ";
+            <?php
+            
           }
 
           ?>
@@ -178,7 +179,7 @@ session_start();
 
 
         <?php
-               include("php\connect.php");
+               include("php/connect.php");
                $link=connectSkydancer();
                $result=mysqli_query($link, "select * from flights;");
              ?>
@@ -230,6 +231,7 @@ session_start();
             <p><strong>Washington</strong></p>
             <p>1/9/2017 - 15/9/2017</p>
             <button class="btn" data-toggle="modal" data-target="#myModal">Tiketa erosi</button>
+            
           </div>
         </div>
         <div class="col-sm-4">
@@ -273,11 +275,11 @@ session_start();
             <form role="form">
               <div class="form-group">
                 <label for="psw"><span class="glyphicon glyphicon-shopping-cart"></span> Hiru baino gehiago 7% merkeago</label>
-                <input type="number" class="form-control" id="psw" placeholder="Zenbat nahi dituzu?">
+                <input type="number" class="form-control" id="psw" placeholder="Zenbat nahi dituzu?" required>
               </div>
               <div class="form-group">
                 <label for="usrname"><span class="glyphicon glyphicon-user"></span> Bidali hona:</label>
-                <input type="text" class="form-control" id="usrname" placeholder="Sartu zure e-maila">
+                <input type="text" class="form-control" id="usrname" placeholder="Sartu zure e-maila" required>
               </div>
               <button type="submit" class="btn btn-block" data-toggle="modal" data-target="#myModal2">Ordaindu
                 <span class="glyphicon glyphicon-ok"></span>
@@ -331,37 +333,34 @@ session_start();
           <form  name="erregistratu"action="php/bidaia.php" method="post">
             <table class="table">
               <tr>
-                <td>Bidaiaren ID:</td><td><input type="text" name="id" class="logininput"></td>
+                <td>Iraupena:</td> <td><input type="text" name="dur" class="logininput" required></td>
               </tr>
               <tr>
-                <td>Iraupena:</td> <td><input type="text" name="dur" class="logininput"></td>
+                <td>Nondik:</td><td><input type="text" name="ori" class="logininput" required></td>
               </tr>
               <tr>
-                <td>Nondik:</td><td><input type="text" name="ori" class="logininput"></td>
+                <td>Nora:</td><td><input type="text" name="des" class="logininput" required></td>
               </tr>
               <tr>
-                <td>Nora:</td><td><input type="text" name="des" class="logininput"></td>
+                <td>Lehenengo pilotoaren izena:</td><td><input type="text" name="p1" class="logininput" required></td>
               </tr>
               <tr>
-                <td>Lehenengo pilotoaren izena:</td><td><input type="text" name="p1" class="logininput"></td>
+                <td>Bigarren pilotoaren izena:</td><td><input type="text" name="p2" class="logininput" required></td>
               </tr>
               <tr>
-                <td>Bigarren pilotoaren izena:</td><td><input type="text" name="p2" class="logininput"></td>
+                <td>Ticket kopurua:</td><td><input type="text" name="tic" class="logininput" required></td>
               </tr>
               <tr>
-                <td>Ticket kopurua:</td><td><input type="text" name="tic" class="logininput"></td>
+                <td>Saldu egin diren ticketak (baldin badaude):</td><td><input type="text" name="tics" class="logininput" required></td>
               </tr>
               <tr>
-                <td>Saldu egin diren ticketak (baldin badaude):</td><td><input type="text" name="tics" class="logininput"></td>
+                <td>Data (YYYY-MM-DD):</td><td><input type="date" name="dat" class="logininput" required></td>
               </tr>
               <tr>
-                <td>Data (YYYY-MM-DD):</td><td><input type="date" name="dat" class="logininput"></td>
-              </tr>
-              <tr>
-                <td>Prezioa:</td><td><input type="text" name="prc" class="logininput"></td>
+                <td>Prezioa:</td><td><input type="text" name="prc" class="logininput" required></td>
               </tr>
             </table>
-            <input class="btn" type="submit" name="login" value="Jarraitu">
+            <input class="btn" type="submit" name="login" value="Jarraitu" required>
           </form>
 
         </div>
@@ -392,7 +391,7 @@ session_start();
                 <td>
                   <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
-                    <input type="text" name="userid" class="form-control" placeholder="Erabiltzaile ID" aria-describedby="basic-addon1">
+                    <input type="text" name="userid" class="form-control" placeholder="Erabiltzaile ID" aria-describedby="basic-addon1" required>
                   </div>
                 </td>
               </tr>
@@ -400,7 +399,7 @@ session_start();
                 <td>
                   <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-lock"></span></span>
-                    <input type="password" name="passwd"class="form-control" placeholder="Pasahitza" aria-describedby="basic-addon1">
+                    <input type="password" name="passwd"class="form-control" placeholder="Pasahitza" aria-describedby="basic-addon1" required>
                   </div>
                 </td>
               </tr>
@@ -440,7 +439,7 @@ session_start();
                 <td>
                   <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-credit-card"></span></span>
-                    <input type="text" name="dni" class="form-control" placeholder="DNI / NAN" aria-describedby="basic-addon1">
+                    <input type="text" name="dni" class="form-control" placeholder="DNI / NAN" aria-describedby="basic-addon1" required>
                   </div>
                 </td>
               </tr>
@@ -448,7 +447,7 @@ session_start();
                 <td>
                   <div class="input-group">
                   <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-option-vertical"></span></span>
-                  <input type="text" name="izena" class="form-control" placeholder="Izena" aria-describedby="basic-addon1">
+                  <input type="text" name="izena" class="form-control" placeholder="Izena" aria-describedby="basic-addon1" required>
                 </div>
               </td>
               </tr>
@@ -456,7 +455,7 @@ session_start();
                 <td>
                   <div class="input-group">
                   <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-option-vertical"></span></span>
-                  <input type="text" name="abi" class="form-control" placeholder="Abizena" aria-describedby="basic-addon1">
+                  <input type="text" name="abi" class="form-control" placeholder="Abizena" aria-describedby="basic-addon1" required>
                 </div>
               </td>
               </tr>
@@ -464,7 +463,7 @@ session_start();
                 <td>
                   <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar"></span></span>
-                    <input type="date" name="data" class="form-control" placeholder="Jaiotze data" aria-describedby="basic-addon1">
+                    <input type="date" name="data" class="form-control" placeholder="Jaiotze data" aria-describedby="basic-addon1" required>
                   </div>
                 </td>
               </tr>
@@ -472,21 +471,21 @@ session_start();
                 <td>
                   <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-home"></span></span>
-                    <input type="text" name="hel" class="form-control" placeholder="Helbidea" aria-describedby="basic-addon1">
+                    <input type="text" name="hel" class="form-control" placeholder="Helbidea" aria-describedby="basic-addon1" required>
                   </div>
                 </td>
               </tr>
               <tr>
                 <td><div class="input-group">
                   <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-phone"></span></span>
-                  <input type="tel" name="tlf" class="form-control" placeholder="Telefonoa" aria-describedby="basic-addon1">
+                  <input type="tel" name="tlf" class="form-control" placeholder="Telefonoa" aria-describedby="basic-addon1" required>
                 </div></td>
               </tr>
               <tr>
                 <td>
                   <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
-                    <input type="text" name="username" class="form-control" placeholder="Erabiltzaile izena" aria-describedby="basic-addon1">
+                    <input type="text" name="username" class="form-control" placeholder="Erabiltzaile izena" aria-describedby="basic-addon1" required>
                   </div>
                 </td>
               </tr>
@@ -494,7 +493,7 @@ session_start();
                 <td>
                   <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-lock"></span></span>
-                    <input type="text" name="passwd" class="form-control" placeholder="Pasahitza" aria-describedby="basic-addon1">
+                    <input type="text" name="passwd" class="form-control" placeholder="Pasahitza" aria-describedby="basic-addon1" required>
                   </div>
                 </td>
               </tr>
@@ -503,18 +502,18 @@ session_start();
 
                   <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-envelope"></span></span>
-                    <input type="email" name="email" class="form-control" placeholder="Email" aria-describedby="basic-addon1">
+                    <input type="email" name="email" class="form-control" placeholder="Email" aria-describedby="basic-addon1" required>
                   </div>
                 </td>
               </tr>
               <tr>
                 <td>
-                <div class="g-recaptcha" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;" data-sitekey="6LfdKh8UAAAAACtpTdmwKPVsgFGhRL8OJX9tJOS1"></div>
+                <div class="g-recaptcha" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;" data-sitekey="6LcA2x8UAAAAAKKGl9E1uV09jGo01WOvB7k-W9st"></div>
                 </td>
               </tr>
             </table>
 
-            <input class="btn" type="submit" name="login" value="Jarraitu">
+            <input class="btn" type="submit" name="login" value="Jarraitu"> 
           </form>
         </div>
         <div class="modal-footer">
