@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-05-2017 a las 11:38:46
+-- Tiempo de generación: 12-05-2017 a las 13:05:52
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -36,18 +36,20 @@ CREATE TABLE `flights` (
   `tickets` int(3) DEFAULT NULL,
   `tickets_sold` int(3) DEFAULT NULL,
   `fdate` date DEFAULT NULL,
-  `price` float DEFAULT NULL
+  `price` float DEFAULT NULL,
+  `photo` varchar(150) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `flights`
 --
 
-INSERT INTO `flights` (`id`, `duration`, `origin`, `destination`, `pilot1`, `pilot2`, `tickets`, `tickets_sold`, `fdate`, `price`) VALUES
-(1, 300, 'Madrid', 'Hogwarts', 'Eneko', 'Paco', 300, 240, '2017-04-27', 50),
-(2, 221, 'Bilbao', 'Paris', 'Jokin', 'Naroa', 70, 55, '2017-04-29', 77),
-(44, 342, 'dasd', 'gregre', 'ghhg', 'gfdgfd', 456, 123, '2017-03-06', 70),
-(777, 24, 'China', 'Japon', 'Manuel', 'IÃ±aki', 300, 50, '2017-07-03', 30);
+INSERT INTO `flights` (`id`, `duration`, `origin`, `destination`, `pilot1`, `pilot2`, `tickets`, `tickets_sold`, `fdate`, `price`, `photo`) VALUES
+(0, 41, 'dwqf', 'rewgwe', 'grewgrew4', 'grw', 6, 5, '2017-05-12', 500, '../img/flightpics/03 - JPT5dX0.jpg'),
+(1, 300, 'Madrid', 'Hogwarts', 'Eneko', 'Paco', 300, 240, '2017-04-27', 50, ''),
+(2, 221, 'Bilbao', 'Paris', 'Jokin', 'Naroa', 70, 55, '2017-04-29', 77, ''),
+(44, 342, 'dasd', 'gregre', 'ghhg', 'gfdgfd', 456, 123, '2017-03-06', 70, ''),
+(777, 24, 'China', 'Japon', 'Manuel', 'IÃ±aki', 300, 50, '2017-07-03', 30, '');
 
 -- --------------------------------------------------------
 
