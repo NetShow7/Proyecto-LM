@@ -15,6 +15,7 @@ session_start();
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="js/validate.js"></script>
+  <script src="js/photos.js" charset="utf-8"></script>
   <script src="js/picbrowse.js">
   </script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -196,12 +197,20 @@ session_start();
                   <th>Data</th>
                   <th>Prezioa (€)</th>
                   <th>Ticketak</th>
+                  <th>Argazkia</th>
                 </tr>
               </thead>
               <?php
                  while ($erregistroa=mysqli_fetch_array($result)) {
                    # code...
-                   echo "<tbody><tr><td>".$erregistroa["id"]."</td><td>".$erregistroa["origin"]."</td><td>".$erregistroa["destination"]."</td><td>".$erregistroa["fdate"]."</td><td>". $erregistroa["price"]."</td><td>".($erregistroa["tickets"]-$erregistroa["tickets_sold"])."</td></tr></tbody>";
+                   $argazkia = substr($erregistroa["photo"],3);
+                   echo "<tbody><tr><td>".$erregistroa["id"]."</td><td>".$erregistroa["origin"]."</td><td>".$erregistroa["destination"]."</td><td>".$erregistroa["fdate"]."</td><td>". $erregistroa["price"]."</td><td>".($erregistroa["tickets"]-$erregistroa["tickets_sold"])."</td><td>
+
+                   <img id=\"myImg\" src=\"".$argazkia."\" alt=\"Trolltunga, Norway\" width=\"300\" height=\"200\">
+
+
+
+                   </td></tr></tbody>";
                  }
                  echo "</table>";
                  mysqli_free_result($result);
@@ -467,6 +476,18 @@ session_start();
       </div>
     </div>
 
+
+    <div id="argazk" class="modal">
+
+  <!-- The Close Button -->
+  <span class="close" onclick="document.getElementById('argazk').style.display='none'">&times;</span>
+
+  <!-- Modal Content (The Image) -->
+  <img class="modal-content" id="img01">
+
+  <!-- Modal Caption (Image Text) -->
+  <div id="caption"></div>
+</div>
 
     <div class="modal fade" id="erregistratu" role="dialog">
       <div class="modal-dialog">
