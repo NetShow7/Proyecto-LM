@@ -12,12 +12,13 @@ session_start();
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="lightbox.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="js/lightbox.js" charset="utf-8"></script>
   <script src="js/validate.js"></script>
   <script src="js/photos.js" charset="utf-8"></script>
-  <script src="js/picbrowse.js">
-  </script>
+  <script src="js/picbrowse.js"></script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 
@@ -206,7 +207,7 @@ session_start();
                    $argazkia = substr($erregistroa["photo"],3);
                    echo "<tbody><tr><td>".$erregistroa["id"]."</td><td>".$erregistroa["origin"]."</td><td>".$erregistroa["destination"]."</td><td>".$erregistroa["fdate"]."</td><td>". $erregistroa["price"]."</td><td>".($erregistroa["tickets"]-$erregistroa["tickets_sold"])."</td><td>
 
-                   <img id=\"myImg\" src=\"".$argazkia."\" alt=\"Trolltunga, Norway\" width=\"300\" height=\"200\">
+                   <a href=\"".$argazkia."\" data-lightbox=\"image-1\" data-title=\"My caption\"><img id=\"myImg\" src=\"".$argazkia."\" alt=\"Trolltunga, Norway\" width=\"150\" height=\"100\"></a>
 
 
 
@@ -407,12 +408,8 @@ session_start();
                 <tr>
                   <td>
                     <div class="input-group">
-                      <label class="input-group-btn">
-                    <span class="btn btn-primary">
-                        Argazkia <input type="file" style="display: none;" name="pic" id="pic">
-                    </span>
-                </label>
-                      <input type="text" class="form-control" readonly>
+
+
                     </div>
 
 
@@ -477,17 +474,7 @@ session_start();
     </div>
 
 
-    <div id="argazk" class="modal">
 
-  <!-- The Close Button -->
-  <span class="close" onclick="document.getElementById('argazk').style.display='none'">&times;</span>
-
-  <!-- Modal Content (The Image) -->
-  <img class="modal-content" id="img01">
-
-  <!-- Modal Caption (Image Text) -->
-  <div id="caption"></div>
-</div>
 
     <div class="modal fade" id="erregistratu" role="dialog">
       <div class="modal-dialog">
@@ -535,6 +522,7 @@ session_start();
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar"></span></span>
                       <input type="date" name="data" class="form-control" placeholder="Jaiotze data" aria-describedby="basic-addon1" required>
+                      
                     </div>
                   </td>
                 </tr>
@@ -582,7 +570,7 @@ session_start();
 
                 <tr>
                   <td>
-                    <div class="g-recaptcha" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;" data-sitekey="6LcA2x8UAAAAAKKGl9E1uV09jGo01WOvB7k-W9st"></div>
+                    <div class="g-recaptcha" data-sitekey="6LfdKh8UAAAAACtpTdmwKPVsgFGhRL8OJX9tJOS1"></div>
                   </td>
                 </tr>
               </table>
