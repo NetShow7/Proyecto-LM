@@ -29,6 +29,9 @@ session_start();
   if (isset($_GET["login"]) && $_GET["login"]==0) {
     echo "<script type='text/javascript'>alert(\"Zeure Id zenbakia edo pasahitza gaizki dago.\");</script>";
   }
+  if (isset($_GET["del"]) && $_GET["del"]==1) {
+    echo "<script type='text/javascript'>alert(\"Bidaia ezabatua.\");</script>";
+  }
   ?>
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
@@ -205,9 +208,10 @@ session_start();
                  while ($erregistroa=mysqli_fetch_array($result)) {
                    # code...
                    $argazkia = substr($erregistroa["photo"],3);
+                   $argazkia2 = substr($erregistroa["photo"],18);
                    echo "<tbody><tr><td>".$erregistroa["id"]."</td><td>".$erregistroa["origin"]."</td><td>".$erregistroa["destination"]."</td><td>".$erregistroa["fdate"]."</td><td>". $erregistroa["price"]."</td><td>".($erregistroa["tickets"]-$erregistroa["tickets_sold"])."</td><td>
 
-                   <a href=\"".$argazkia."\" data-lightbox=\"image-1\" data-title=\"My caption\"><img id=\"myImg\" src=\"".$argazkia."\" alt=\"Trolltunga, Norway\" width=\"150\" height=\"100\"></a>
+                   <a href=\"".$argazkia."\" data-lightbox=\"image-1\" data-title=\"".$argazkia2."\"><img id=\"myImg\" src=\"".$argazkia."\" alt=\"".$argazkia2."\" width=\"150\" height=\"100\"></a>
 
 
 
@@ -408,8 +412,9 @@ session_start();
                 <tr>
                   <td>
                     <div class="input-group">
-
-
+                      <label class="btn btn-default btn-file">
+    Browse <input type="file" name="pic" id="pic" hidden !important>
+</label>
                     </div>
 
 
@@ -418,6 +423,9 @@ session_start();
               </table>
               <input class="btn" type="submit" name="login" value="Jarraitu" required>
             </form>
+
+
+
 
           </div>
           <div class="modal-footer">
@@ -522,7 +530,7 @@ session_start();
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar"></span></span>
                       <input type="date" name="data" class="form-control" placeholder="Jaiotze data" aria-describedby="basic-addon1" required>
-                      
+
                     </div>
                   </td>
                 </tr>
@@ -555,6 +563,14 @@ session_start();
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-lock"></span></span>
                       <input type="text" name="passwd" class="form-control" placeholder="Pasahitza" aria-describedby="basic-addon1" required>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-lock"></span></span>
+                      <input type="text" name="passwd2" class="form-control" placeholder="Pasahitza errepikatu" aria-describedby="basic-addon1" required>
                     </div>
                   </td>
                 </tr>

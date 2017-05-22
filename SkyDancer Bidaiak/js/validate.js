@@ -15,7 +15,7 @@ function validateForm() {
     }
 }
 
-function erregistroaBalidatu(){
+function bidaiaBalidatu(){
   var dur = document.forms["erregistratu"]["dur"].value;
   var ori = document.forms["erregistratu"]["ori"].value;
   var des = document.forms["erregistratu"]["des"].value;
@@ -25,4 +25,12 @@ function erregistroaBalidatu(){
   var tic_s = document.forms["erregistratu"]["tics"].value;
   var date = document.forms["erregistratu"]["date"].value;
   var prc = document.forms["erregistratu"]["prc"].value;
+
+  if (dur == "" || isNaN(dur)) {
+    alert("Iraupena txarto dago.")
+    return false;
+  }else if (!isNaN(ori)) {
+    alert(".")
+
+  }else if
 }
