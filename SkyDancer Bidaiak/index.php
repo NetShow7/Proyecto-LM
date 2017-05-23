@@ -27,7 +27,7 @@ session_start();
 <body id="hasiera" data-spy="scroll" data-target=".navbar" data-offset="50">
   <?php
   if (isset($_GET["login"]) && $_GET["login"]==0) {
-    echo "<script type='text/javascript'>alert(\"Zeure Id zenbakia edo pasahitza gaizki dago.\");</script>";
+    echo "<script type='text/javascript'>alert(\"Zeure erabiltzaile izena edo pasahitza gaizki dago.\");</script>";
   }
   if (isset($_GET["del"]) && $_GET["del"]==1) {
     echo "<script type='text/javascript'>alert(\"Bidaia ezabatua.\");</script>";
@@ -455,7 +455,7 @@ session_start();
                   <td>
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
-                      <input type="text" name="userid" class="form-control" placeholder="Erabiltzaile ID" aria-describedby="basic-addon1" required>
+                      <input type="text" name="username" class="form-control" placeholder="Erabiltzaile izena" aria-describedby="basic-addon1" required>
                     </div>
                   </td>
                 </tr>
@@ -497,10 +497,13 @@ session_start();
             <div class="alert alert-info">
               <strong>Mezedez:</strong> bete urrengo datuak:
             </div>
-            <form action="php/erregistratu.php" method="post" enctype="multipart/form-data">
+            <form action="php/erregistratu.php"  onsubmit="return erregistroaBalidatu()"  id="reg" method="post" enctype="multipart/form-data">
+
               <table class="table">
 
-
+<tr>
+  <td>  <p style="margin:auto; text-align: center;">Ohiko datuak</p></td>
+</tr>
                 <tr>
                   <td>
                     <div class="input-group">
@@ -548,6 +551,11 @@ session_start();
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-phone"></span></span>
                       <input type="tel" name="tlf" class="form-control" placeholder="Telefonoa" aria-describedby="basic-addon1" required>
                     </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p><p><p style="margin:auto; text-align: center;">Erabiltzaile datuak</p></p></p>
                   </td>
                 </tr>
                 <tr>

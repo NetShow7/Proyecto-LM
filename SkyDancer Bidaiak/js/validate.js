@@ -1,21 +1,45 @@
-function validateForm() {
-    var x = document.forms["loginform"]["userid"].value;
-    var z = document.forms["loginform"]["passwd"].value;
-    if (x == "" && z == "") {
-        alert("Zeure datuak sartu, mezedez");
-        return false;
-    } else if (x == "") {
-      alert("Zeure IDa sartu, mezedez");
-      return false;
-    } else if (z == "") {
-      alert('Zeure pasahitza idatzi, mezedez');
-      return false;
-    }else {
-      return true;
-    }
+function validateForm() {   
+  var x = document.forms["loginform"]["userid"].value;   
+  var z = document.forms["loginform"]["passwd"].value;   
+  if (x == "" && z == "") {      
+    alert("Zeure datuak sartu, mezedez");       
+    return false;   
+  } else if (x == "") {   
+    alert("Zeure IDa sartu, mezedez");
+    return false;   
+  } else if (z == "") {   
+    alert('Zeure pasahitza idatzi, mezedez');
+    return false;   
+  } else {   
+    return true;   
+  }
 }
 
-function bidaiaBalidatu(){
+function erregistroaBalidatu() {
+  var dni = document.forms["reg"]["dni"].value;
+  var izena = document.forms["reg"]["izena"].value;
+  var abi = document.forms["reg"]["abi"].value;
+  var data = document.forms["reg"]["data"].value;
+  var hel = document.forms["reg"]["hel"].value;
+  var tlf = document.forms["reg"]["tlf"].value;
+  var username = document.forms["reg"]["username"].value;
+  var passwd = document.forms["reg"]["passwd"].value;
+  var passwd2 = document.forms["reg"]["passwd2"].value;
+  var email = document.forms["reg"]["email"].value;
+  if (isNaN(tlf)) {
+    alert("Telefonoa zenaki bat izan behar da")
+    return false;
+  } else if (passwd == passwd2) {
+    alert("Pasahitzak ez dira berdinak")
+    return false;
+  } else if (dni.length != 9) {
+    alert("DNI zenbakia 9 karaktere eduki behar ditu")
+    return false;
+  }
+
+}
+
+function bidaiaBalidatu() {
   var dur = document.forms["erregistratu"]["dur"].value;
   var ori = document.forms["erregistratu"]["ori"].value;
   var des = document.forms["erregistratu"]["des"].value;
@@ -29,8 +53,8 @@ function bidaiaBalidatu(){
   if (dur == "" || isNaN(dur)) {
     alert("Iraupena txarto dago.")
     return false;
-  }else if (!isNaN(ori)) {
+  } else if (!isNaN(ori)) {
     alert(".")
 
-  }else if
+  } else if
 }
