@@ -32,6 +32,9 @@ session_start();
   if (isset($_GET["del"]) && $_GET["del"]==1) {
     echo "<script type='text/javascript'>alert(\"Bidaia ezabatua.\");</script>";
   }
+  if (isset($_GET["captcha"]) && $_GET["captcha"]==0) {
+    echo "<script type='text/javascript'>alert(\"Ezin izan da captcha balidatu\");</script>";
+  }
   ?>
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
@@ -48,6 +51,11 @@ session_start();
             <li><a href="#bidaiak">Bidaiak</a></li>
             <li><a href="#erreserbak">Erreserbak</a></li>
             <li><a href="#kontaktua">Kontaktua</a></li>
+            <audio controls>
+
+  <source src="audio/musica.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
             <?php
 
           if (isset($_SESSION["loged"])) {
@@ -73,8 +81,8 @@ session_start();
               <?php
           }else {
             ?>
-                <li style="position: relative; float:right; margin-right: 4%; "><a href="#usermenu" data-toggle="modal" data-target="#erregistratu">Erregistratu</a></li>
-                <li style="position: absolute; right: 0;"><a href="#usermenu" data-toggle="modal" data-target="#login">Login</a></li>
+                <li style="position: relative; float:right;"><a href="#usermenu" data-toggle="modal" data-target="#login">Login</a></li>
+                <li style="position: relative; float:right; "><a href="#usermenu" data-toggle="modal" data-target="#erregistratu">Erregistratu</a></li>
 
                 <?php
 
@@ -135,16 +143,22 @@ session_start();
     <div id="bidaiak" class="container text-center">
       <h3>SkyDancer Bidaiak</h3>
       <p><em>Edozein leku, edoizen momentuan.</em></p>
-      <p>1990-an sortua, gure empresa egunero handiagoa egiten da zu bezalako pertsonekin, konfiatzen duten pertsonekin. Beti sahiatzen gara prezio merkeenak eta erosotasun guztiekin lan egiten.</p>
+      <p>1990-an sortua, gure empresa egunero handiagoa egiten da zu bezalako pertsonekin, konfiatzen duten pertsonekin. Beti sahiatzen gara prezio merkeenak eta erosotasun guztiekin lan egiten.<br>
+      <h3><a href="#usermenu" data-toggle="modal" data-target="#vid">Tour bideoa</a></h3></p>
 
+
+
+
+    </div>
       <br>
       <div class="row">
         <div class="col-sm-4">
           <p class="text-center"><strong>Hegazkinak</strong></p><br>
           <a href="#demo" data-toggle="collapse">
-            <img src="img/avion.png" class="img-circle person" alt="Random Name" style="height: 255px; width:255px;">
+            <img src="img/avion.png" class="img-circle person" alt="Random Name"style="display: block;
+    margin: 0 auto; height: 255px; width:255px;">
           </a>
-          <div id="demo" class="collapse">
+          <div id="demo" class="collapse" style="text-align: center">
             <p>Gure egazkinak </p>
             <p>azken modelokoak</p>
             <p>dira.</p>
@@ -153,10 +167,11 @@ session_start();
         <div class="col-sm-4">
           <p class="text-center"><strong>Denda fisikoak</strong></p><br>
           <a href="#demo2" data-toggle="collapse">
-            <img src="img/mapa.gif" class="img-circle person" alt="Random Name" width="255" height="255" style="
-          height: 255px;">
+            <img src="img/mapa.gif" class="img-circle person" alt="Random Name" style="display: block;
+    margin: 0 auto; height: 255px; width:255px;">
+
           </a>
-          <div id="demo2" class="collapse">
+          <div id="demo2" class="collapse" style="text-align: center">
             <p>Espainiako hiri</p>
             <p>guztietan denda</p>
             <p>fisikoak ditugu.</p>
@@ -165,10 +180,10 @@ session_start();
         <div class="col-sm-4">
           <p class="text-center"><strong>Prezioa</strong></p><br>
           <a href="#demo3" data-toggle="collapse">
-            <img src="img/precio.jpg" class="img-circle person" alt="Random Name" width="255" height="255" style="
-          height: 255px;">
+            <img src="img/precio.jpg" class="img-circle person" alt="Random Name" style="display: block;
+    margin: 0 auto; height: 255px; width:255px;">
           </a>
-          <div id="demo3" class="collapse">
+          <div id="demo3" class="collapse" style="text-align: center">
             <p>Merkatuko prezio</p>
             <p>merkeenak ditugu,</p>
             <p>benetan ;)</p>
@@ -285,6 +300,36 @@ session_start();
       </div>
     </div>
     <!-- Modal -->
+
+
+        <div class="modal fade" id="vid" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4><span class="glyphicon glyphicon-lock"></span>Tour</h4>
+              </div>
+              <div class="modal-body">
+                <form role="form">
+                  <iframe width="420" height="315"
+                src="https://www.youtube.com/embed/snSanCtlLmc">
+                </iframe>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+                  <span class="glyphicon glyphicon-remove"></span> Utzi
+                </button>
+                <p>Laguntza <a href="#">bila?</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+
     <div class="modal fade" id="myModal" role="dialog">
       <div class="modal-dialog">
 
@@ -549,7 +594,7 @@ session_start();
                   <td>
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-phone"></span></span>
-                      <input type="tel" name="tlf" class="form-control" placeholder="Telefonoa" aria-describedby="basic-addon1" required>
+                      <input type="tel" name="tel" class="form-control" placeholder="Telefonoa" aria-describedby="basic-addon1" required>
                     </div>
                   </td>
                 </tr>
