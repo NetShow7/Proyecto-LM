@@ -27,7 +27,7 @@ function erregistroaBalidatu() {
   var passwd2 = document.forms["reg"]["passwd2"].value;
   var email = document.forms["reg"]["email"].value;
   if (isNaN(tlf)) {
-    alert("Telefonoa zenaki bat izan behar da")
+    alert("Telefonoa zenbaki bat izan behar da")
     return false;
   } else if (passwd == passwd2) {
     alert("Pasahitzak ez dira berdinak")

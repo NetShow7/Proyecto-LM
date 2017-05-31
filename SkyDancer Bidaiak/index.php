@@ -29,6 +29,9 @@ session_start();
   if (isset($_GET["login"]) && $_GET["login"]==0) {
     echo "<script type='text/javascript'>alert(\"Zeure erabiltzaile izena edo pasahitza gaizki dago.\");</script>";
   }
+  if ($_GET["mail"]==true) {
+    echo "<script type='text/javascript'>alert(\"Mezua bidali da.\");</script>";
+  }
   if (isset($_GET["del"]) && $_GET["del"]==1) {
     echo "<script type='text/javascript'>alert(\"Bidaia ezabatua.\");</script>";
   }
@@ -313,7 +316,7 @@ Your browser does not support the audio element.
               </div>
               <div class="modal-body">
                 <form role="form">
-                  <iframe width="420" height="315"
+                  <iframe width="100%" height="30%"
                 src="https://www.youtube.com/embed/snSanCtlLmc">
                 </iframe>
                 </form>
@@ -718,6 +721,9 @@ Your browser does not support the audio element.
           <p><span class="glyphicon glyphicon-phone"></span>Tlf: +34 943 579 120</p>
           <p><span class="glyphicon glyphicon-envelope"></span>Email: Skydancerbidaiak@gmail.com</p>
         </div>
+        <form  action="php/email.php" method="post">
+
+
         <div class="col-md-8">
           <div class="row">
             <div class="col-sm-6 form-group">
@@ -735,6 +741,7 @@ Your browser does not support the audio element.
             </div>
           </div>
         </div>
+      </form>
       </div>
       <br>
 
