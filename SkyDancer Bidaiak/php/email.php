@@ -9,7 +9,7 @@ include_once 'connect.php';
 
     //incluimos la clase PHPMailer
     //require_once('php/PHPMailer/class.phpmailer.php');
-    require_once('phpmail/PHPMailerAutoload.php');
+    require_once('../phpmail/PHPMailerAutoload.php');
 
     $mail = new PHPMailer();
     //indico a la clase que use SMTP

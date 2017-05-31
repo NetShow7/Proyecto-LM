@@ -29,8 +29,10 @@ session_start();
   if (isset($_GET["login"]) && $_GET["login"]==0) {
     echo "<script type='text/javascript'>alert(\"Zeure erabiltzaile izena edo pasahitza gaizki dago.\");</script>";
   }
-  if ($_GET["mail"]==true) {
+  if (isset($_GET["mail"]) && $_GET["mail"]=="true") {
     echo "<script type='text/javascript'>alert(\"Mezua bidali da.\");</script>";
+  }elseif (isset($_GET["mail"])) {
+    echo "<script type='text/javascript'>alert(\"Ezin izan da mezua bidali da.\");</script>";
   }
   if (isset($_GET["del"]) && $_GET["del"]==1) {
     echo "<script type='text/javascript'>alert(\"Bidaia ezabatua.\");</script>";
@@ -229,7 +231,7 @@ Your browser does not support the audio element.
                    $argazkia2 = substr($erregistroa["photo"],18);
                    echo "<tbody><tr><td>".$erregistroa["id"]."</td><td>".$erregistroa["origin"]."</td><td>".$erregistroa["destination"]."</td><td>".$erregistroa["fdate"]."</td><td>". $erregistroa["price"]."</td><td>".($erregistroa["tickets"]-$erregistroa["tickets_sold"])."</td><td>
 
-                   <a href=\"".$argazkia."\" data-lightbox=\"image-1\" data-title=\"".$argazkia2."\"><img id=\"myImg\" src=\"".$argazkia."\" alt=\"".$argazkia2."\" width=\"150\" height=\"100\"></a>
+                   <a href=\"".$argazkia."\" data-lightbox=\"image-1\" data-title=\"".$argazkia2."\"><img id=\"myImg\" src=\"".$argazkia."\" alt=\"".$argazkia2."\" width=\"25\" height=\"25\"></a>
 
 
 
@@ -436,7 +438,7 @@ Your browser does not support the audio element.
                 <tr>
                   <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-tag"></span></span>
-                    <input type="number" name="tic" class="form-control" placeholder="Gelditzen diren ticketak" aria-describedby="basic-addon1" required>
+                    <input type="number" name="tic" class="form-control" placeholder="Ticket kopurua" aria-describedby="basic-addon1" required>
                   </div>
                 </tr>
                 <tr>
