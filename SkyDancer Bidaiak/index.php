@@ -34,6 +34,9 @@ session_start();
   }elseif (isset($_GET["mail"])) {
     echo "<script type='text/javascript'>alert(\"Ezin izan da mezua bidali da.\");</script>";
   }
+  if (isset($_GET["res"])) {
+  echo "<script type='text/javascript'>alert(\"Zeure bidaia erreserbatuta dago.\");</script>";
+  }
   if (isset($_GET["del"]) && $_GET["del"]==1) {
     echo "<script type='text/javascript'>alert(\"Bidaia ezabatua.\");</script>";
   }
@@ -215,7 +218,6 @@ Your browser does not support the audio element.
             <table class="table">
               <thead>
                 <tr>
-                  <th>Bidaiaren ID</th>
                   <th>Nondik</th>
                   <th>Nora</th>
                   <th>Data</th>
@@ -229,7 +231,7 @@ Your browser does not support the audio element.
                    # code...
                    $argazkia = substr($erregistroa["photo"],3);
                    $argazkia2 = substr($erregistroa["photo"],18);
-                   echo "<tbody><tr><td>".$erregistroa["id"]."</td><td>".$erregistroa["origin"]."</td><td>".$erregistroa["destination"]."</td><td>".$erregistroa["fdate"]."</td><td>". $erregistroa["price"]."</td><td>".($erregistroa["tickets"]-$erregistroa["tickets_sold"])."</td><td>
+                   echo "<tbody><tr><td>".$erregistroa["origin"]."</td><td>".$erregistroa["destination"]."</td><td>".$erregistroa["fdate"]."</td><td>". $erregistroa["price"]."</td><td>".($erregistroa["tickets"]-$erregistroa["tickets_sold"])."</td><td>
 
                    <a href=\"".$argazkia."\" data-lightbox=\"image-1\" data-title=\"".$argazkia2."\"><img id=\"myImg\" src=\"".$argazkia."\" alt=\"".$argazkia2."\" width=\"25\" height=\"25\"></a>
 
@@ -249,58 +251,27 @@ Your browser does not support the audio element.
       <div class="container">
 
         <div class="row text-center">
-          <div class="col-sm-4">
-            <div class="thumbnail">
-
-              <img src="img\paris.jpg" alt="Paris" width="400" height="300">
-              <p><strong>Paris</strong></p>
-              <p>12/6/2017 - 30/8/2017</p>
 
 
-              <button class="btn" data-toggle="modal" data-target="#myModal">Tiketa erosi</button>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="thumbnail">
-              <img src="img\jamaica.jpg" alt="Paris" width="400" height="300">
-              <p><strong>Jamaica</strong></p>
-              <p>4/3/2017 - 25/6/2017</p>
-              <button class="btn" data-toggle="modal" data-target="#myModal">Tiketa erosi</button>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="thumbnail">
-              <img src="img\washington.jpg" alt="Paris" width="400" height="300">
-              <p><strong>Washington</strong></p>
-              <p>1/9/2017 - 15/9/2017</p>
-              <button class="btn" data-toggle="modal" data-target="#myModal">Tiketa erosi</button>
+          <?php
+               $link=connectSkydancer();
+               $result=mysqli_query($link, "select * from flights;");
+                while ($erregistroa=mysqli_fetch_array($result)) {
+                  ?><div class="col-sm-4"><?php
+                  echo "
 
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="thumbnail">
-              <img src="img\bangkok.jpg" alt="Paris" width="400" height="300">
-              <p><strong>Bangkok</strong></p>
-              <p>17/4/2017 - 1/8/2017</p>
-              <button class="btn" data-toggle="modal" data-target="#myModal">Tiketa erosi</button>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="thumbnail">
-              <img src="img\moscu.jpg" alt="New York" width="400" height="300">
-              <p><strong>Moscú</strong></p>
-              <p>20/11/2017 - 30/2/2018</p>
-              <button class="btn" data-toggle="modal" data-target="#myModal">Tiketa erosi</button>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="thumbnail">
-              <img src="img\hogwarts.jpg" alt="San Francisco" width="400" height="300">
-              <p><strong>Hogwarts</strong></p>
-              <p>5/7/2017 - 5/8/2017</p>
-              <button class="btn" data-toggle="modal" data-target="#myModal">Tiketa erosi</button>
-            </div>
-          </div>
+                    <div class=\"thumbnail\">
+                      <img src=\"".substr($erregistroa["photo"],3)."\" alt=\"".$erregistroa["destination"]."\" width=\"400\" height=\"300\">
+                      <p><strong>".$erregistroa["destination"]."</strong></p>
+                      <p>".$erregistroa["fdate"]."</p>
+                      <a href=\"php/res.php?id=".$erregistroa["id"]."\"><button type=\"submit\" class=\"btn\">Tiketa erosi</button></a>
+                    </div>
+
+                  </div>
+                  ";
+                }
+             ?>
+
         </div>
       </div>
     </div>
