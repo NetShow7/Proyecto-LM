@@ -69,7 +69,7 @@ Your browser does not support the audio element.
           if (isset($_SESSION["loged"])) {
 
             ?>
-
+              <li style="position: relative; float:right; right: 0;"><a href="#usermenu" data-toggle="modal" data-target="#res">Erreserbak</a></li>
               <li style="position: relative; float:right; right: 0;"><a href="#usermenu" data-toggle="modal" data-target="#bidaia">Bidai berria sartu</a></li>
               <li style="position: relative; float:right; right: 0;"><a href="#usermenu" data-toggle="modal" data-target="#ezabatu">Bidaia ezabatu</a></li>
               <li style="position: relative; float: right; right: 0;"><a href="php/logout.php">Saioa itxi</a></li>
@@ -502,7 +502,54 @@ Your browser does not support the audio element.
       </div>
     </div>
 
+    <div class="modal fade" id="res" role="dialog">
+      <div class="modal-dialog">
 
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Erreserbak</h4>
+          </div>
+          <div class="modal-body">
+            <div class="alert alert-info">
+              <strong>Zeure erreserbak:</strong>
+            </div>
+            <?php
+
+                $link=connectSkydancer(); #We are calling the function
+                $usid = $_SESSION["id"];
+                $result=mysqli_query($link, "select * from reserv inner join flights on reserv.f_id = flights.id where reserv.u_id = ".$usid."");
+              ?>
+              <table class="table">
+                <tr>
+                  <th>Bidaiaren ID</th>
+                  <th>Nondik</th>
+                  <th>Nora</th>
+                  <th>Data</th>
+                  <th>Prezioa (€)</th>
+                  <th>Ezabatu</th>
+                </tr>
+                <?php
+                  while ($erregistroa=mysqli_fetch_array($result)) {
+                    # code...
+                    echo "<tbody><tr><td>".$erregistroa["id"]."</td><td>".$erregistroa["origin"]."</td><td>".$erregistroa["destination"]."</td><td>".$erregistroa["fdate"]."</td><td>". $erregistroa["tickets"]."</td><td><a href=\"php/delres.php?id=".$erregistroa["id"]."\"><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\"></span></a></td></tr></tbody>";
+                  }
+                  mysqli_free_result($result);
+                  mysqli_close($link);
+                 ?>
+
+
+              </table>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn" data-dismiss="modal">Utzi</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
 
 
     <div class="modal fade" id="erregistratu" role="dialog">

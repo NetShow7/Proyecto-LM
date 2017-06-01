@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-05-2017 a las 13:05:52
+-- Tiempo de generación: 01-06-2017 a las 09:49:11
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -45,24 +45,28 @@ CREATE TABLE `flights` (
 --
 
 INSERT INTO `flights` (`id`, `duration`, `origin`, `destination`, `pilot1`, `pilot2`, `tickets`, `tickets_sold`, `fdate`, `price`, `photo`) VALUES
-(0, 41, 'dwqf', 'rewgwe', 'grewgrew4', 'grw', 6, 5, '2017-05-12', 500, '../img/flightpics/03 - JPT5dX0.jpg'),
-(1, 300, 'Madrid', 'Hogwarts', 'Eneko', 'Paco', 300, 240, '2017-04-27', 50, ''),
-(2, 221, 'Bilbao', 'Paris', 'Jokin', 'Naroa', 70, 55, '2017-04-29', 77, ''),
-(44, 342, 'dasd', 'gregre', 'ghhg', 'gfdgfd', 456, 123, '2017-03-06', 70, ''),
-(777, 24, 'China', 'Japon', 'Manuel', 'IÃ±aki', 300, 50, '2017-07-03', 30, '');
+(2, 450, 'Valencia', 'Paris', 'Jokin', 'Mikel', 500, 431, '2017-09-27', 150, '../img/flightpics/paris.jpg'),
+(4, 650, 'Madrid', 'Moscu', 'Petxa', 'Mario', 300, 79, '2020-09-04', 78, '../img/flightpics/moscu.jpg'),
+(5, 800, 'Barcelona', 'Washington', 'Mikel', 'Ana', 400, 288, '2017-07-03', 270, '../img/flightpics/washington.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `reservations`
+-- Estructura de tabla para la tabla `reserv`
 --
 
-CREATE TABLE `reservations` (
-  `res_id` int(4) NOT NULL,
-  `date` date NOT NULL,
-  `us_id` int(4) NOT NULL,
-  `fl_id` int(4) NOT NULL
+CREATE TABLE `reserv` (
+  `id` int(4) NOT NULL,
+  `u_id` int(4) NOT NULL,
+  `f_id` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `reserv`
+--
+
+INSERT INTO `reserv` (`id`, `u_id`, `f_id`) VALUES
+(1, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -80,16 +84,16 @@ CREATE TABLE `users` (
   `phone` int(9) DEFAULT NULL,
   `username` varchar(15) DEFAULT NULL,
   `passwd` varchar(512) DEFAULT NULL,
-  `email` varchar(50) DEFAULT NULL,
-  `isAdmin` tinyint(1) DEFAULT NULL
+  `email` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `dni`, `name`, `surname`, `birth`, `address`, `phone`, `username`, `passwd`, `email`, `isAdmin`) VALUES
-(1, '123456789', 'Eneko', 'Perez', '2017-04-21', 'Calle', 123456789, 'NetShow', '1234', 'zerbait@gmail.com', 1);
+INSERT INTO `users` (`id`, `dni`, `name`, `surname`, `birth`, `address`, `phone`, `username`, `passwd`, `email`) VALUES
+(1, '123456789', 'Eneko', 'Perez', '2017-04-21', 'Calle', 123456789, 'NetShow', '1234', 'zerbait@gmail.com'),
+(2, '58375648Q', 'Eneko', 'Perez', '2017-05-30', 'Kalea', 943718352, 'Dam', '12345', 'dam@gmail.com');
 
 --
 -- Índices para tablas volcadas
@@ -102,12 +106,12 @@ ALTER TABLE `flights`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `reservations`
+-- Indices de la tabla `reserv`
 --
-ALTER TABLE `reservations`
-  ADD PRIMARY KEY (`res_id`),
-  ADD KEY `id_idx1` (`us_id`),
-  ADD KEY `fl_id` (`fl_id`);
+ALTER TABLE `reserv`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `u_id` (`u_id`),
+  ADD KEY `f_id` (`f_id`);
 
 --
 -- Indices de la tabla `users`
@@ -119,15 +123,34 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `email` (`email`);
 
 --
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `flights`
+--
+ALTER TABLE `flights`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT de la tabla `reserv`
+--
+ALTER TABLE `reserv`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `reservations`
+-- Filtros para la tabla `reserv`
 --
-ALTER TABLE `reservations`
-  ADD CONSTRAINT `fl_id` FOREIGN KEY (`fl_id`) REFERENCES `flights` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `us_id` FOREIGN KEY (`us_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `reserv`
+  ADD CONSTRAINT `reserv_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `reserv_ibfk_2` FOREIGN KEY (`f_id`) REFERENCES `flights` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
