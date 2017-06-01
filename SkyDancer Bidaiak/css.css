@@ -45,7 +45,7 @@ h3, h4 {
   }
 }
 .bg-1 {
-  background:  rgb(45, 45, 45);
+  background:  rgb(33, 144, 179);
   color: #bdbdbd;
 }
 .bg-1 h3 {color: #fff;}
@@ -70,7 +70,7 @@ h3, h4 {
 .btn {
   padding: 10px 20px;
   background-color: #333;
-  color:rgb(119, 213, 0);
+  color:rgb(189, 0, 255);
   border-radius: 0;
   transition: .2s;
 }
@@ -79,20 +79,22 @@ h3, h4 {
 }
 .btn:hover, .btn:focus {
   border: 1px solid #333;
-  background-color: rgb(119, 213, 0);
+  background-color: rgb(189, 0, 255);
   color: #000;
 }
 .modal-header, h4, .close {
-  background-color: rgb(45, 45, 45);
-  color:rgb(119, 213, 0) !important;
+  background-color: rgb(33, 144, 179);
+
+  color:rgb(189, 0, 255) !important;
   text-align: center;
   font-size: 30px;
 }
 .modal-header, .modal-body {
   padding: 40px 50px;
+
 }
 .nav-tabs li a {
-  color: #777;
+  color: #007499;
 }
 #map {
   height: 400px;
@@ -101,21 +103,21 @@ h3, h4 {
 .navbar {
   font-family: Montserrat, sans-serif;
   margin-bottom: 0;
-  background-color: rgb(45, 45, 45) !important;
+  background-color: rgb(33, 144, 179) !important;
   border: 0;
   font-size: 11px !important;
   letter-spacing: 4px;
   opacity: 0.9;
 }
 .navbar li a, .navbar .navbar-brand {
-  color: rgb(119, 213, 0) !important;
+  color: rgb(189, 0, 255) !important;
 }
 .navbar-nav li a:hover {
   color: #fff !important;
 }
 .navbar-nav li.active a {
   color: #fff !important;
-  background-color: rgb(144, 144, 144) !important;
+  background-color: rgb(0, 113, 205) !important;
 }
 .navbar-default .navbar-toggle {
   border-color: transparent;
@@ -131,7 +133,7 @@ h3, h4 {
   background-color: red !important;
 }
 footer {
-  background-color: rgb(45, 45, 45);
+  background-color: rgb(33, 144, 179);
   color: #f5f5f5;
   padding: 32px;
 }
@@ -149,7 +151,7 @@ textarea {
   resize: none;
 }
 .logintable td{
-  background-color: rgb(45, 45, 45);
+  background-color: rgb(33, 144, 179);
   color: white;
   font: 400 11px/1.8 "Courier New", Courier, monospace;
 }
@@ -161,7 +163,7 @@ textarea {
 margin: 0 auto;
 width: auto;
 background-color: white;
-border-color:rgb(119, 213, 0) !important;
+border-color:rgb(189, 0, 255) !important;
 }
 
 

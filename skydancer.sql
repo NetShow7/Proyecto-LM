@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-06-2017 a las 09:49:11
+-- Tiempo de generación: 01-06-2017 a las 12:59:56
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -45,8 +45,8 @@ CREATE TABLE `flights` (
 --
 
 INSERT INTO `flights` (`id`, `duration`, `origin`, `destination`, `pilot1`, `pilot2`, `tickets`, `tickets_sold`, `fdate`, `price`, `photo`) VALUES
-(2, 450, 'Valencia', 'Paris', 'Jokin', 'Mikel', 500, 431, '2017-09-27', 150, '../img/flightpics/paris.jpg'),
-(4, 650, 'Madrid', 'Moscu', 'Petxa', 'Mario', 300, 79, '2020-09-04', 78, '../img/flightpics/moscu.jpg'),
+(2, 450, 'Valencia', 'Paris', 'Jokin', 'Mikel', 500, 433, '2017-09-27', 150, '../img/flightpics/paris.jpg'),
+(4, 650, 'Madrid', 'Moscu', 'Petxa', 'Mario', 300, 74, '2020-09-04', 78, '../img/flightpics/moscu.jpg'),
 (5, 800, 'Barcelona', 'Washington', 'Mikel', 'Ana', 400, 288, '2017-07-03', 270, '../img/flightpics/washington.jpg');
 
 -- --------------------------------------------------------
@@ -66,7 +66,9 @@ CREATE TABLE `reserv` (
 --
 
 INSERT INTO `reserv` (`id`, `u_id`, `f_id`) VALUES
-(1, 1, 4);
+(2, 1, 4),
+(3, 1, 2),
+(4, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -93,7 +95,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `dni`, `name`, `surname`, `birth`, `address`, `phone`, `username`, `passwd`, `email`) VALUES
 (1, '123456789', 'Eneko', 'Perez', '2017-04-21', 'Calle', 123456789, 'NetShow', '1234', 'zerbait@gmail.com'),
-(2, '58375648Q', 'Eneko', 'Perez', '2017-05-30', 'Kalea', 943718352, 'Dam', '12345', 'dam@gmail.com');
+(3, '57648648Q', 'Maider', 'GÃ³mez', '1996-04-20', 'Etxea', 637284551, 'Mai_623', 'maipass25', 'maider_g@gmail.com');
 
 --
 -- Índices para tablas volcadas
@@ -135,12 +137,12 @@ ALTER TABLE `flights`
 -- AUTO_INCREMENT de la tabla `reserv`
 --
 ALTER TABLE `reserv`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Restricciones para tablas volcadas
 --
