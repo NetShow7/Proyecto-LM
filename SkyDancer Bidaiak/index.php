@@ -263,8 +263,13 @@ Your browser does not support the audio element.
                     <div class=\"thumbnail\">
                       <img src=\"".substr($erregistroa["photo"],3)."\" alt=\"".$erregistroa["destination"]."\" width=\"400\" height=\"300\">
                       <p><strong>".$erregistroa["destination"]."</strong></p>
-                      <p>".$erregistroa["fdate"]."</p>
-                      <a href=\"php/res.php?id=".$erregistroa["id"]."\"><button type=\"submit\" class=\"btn\">Tiketa erosi</button></a>
+                      <p>".$erregistroa["fdate"]."</p>";
+                      if (isset($_SESSION["loged"])) {
+                        # code...
+                      echo"
+                      <a href=\"php/res.php?id=".$erregistroa["id"]."\"><button type=\"submit\" class=\"btn\">Tiketa erosi</button></a>";
+                    }
+                    echo"
                     </div>
 
                   </div>
@@ -638,7 +643,7 @@ Your browser does not support the audio element.
                   <td>
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-lock"></span></span>
-                      <input type="text" name="passwd" class="form-control" placeholder="Pasahitza" aria-describedby="basic-addon1" required>
+                      <input type="password" name="passwd" class="form-control" placeholder="Pasahitza" aria-describedby="basic-addon1" required>
                     </div>
                   </td>
                 </tr>
@@ -646,7 +651,7 @@ Your browser does not support the audio element.
                   <td>
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-lock"></span></span>
-                      <input type="text" name="passwd2" class="form-control" placeholder="Pasahitza errepikatu" aria-describedby="basic-addon1" required>
+                      <input type="password" name="passwd2" class="form-control" placeholder="Pasahitza errepikatu" aria-describedby="basic-addon1" required>
                     </div>
                   </td>
                 </tr>
